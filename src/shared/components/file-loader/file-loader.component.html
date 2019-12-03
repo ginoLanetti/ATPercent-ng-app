@@ -1,2 +1,7 @@
-<label>{{ labelName }}</label>
-<input type="file"/>
+    <label>
+        {{ labelName }}
+        <input 
+            type="file"
+            accept=".txt,.fasta,.fastq"
+            (change)="onFileChange($event)"/>
+    </label>

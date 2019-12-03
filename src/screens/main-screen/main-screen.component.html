@@ -1,12 +1,36 @@
-<app-file-loader
-    [labelName]="'Upload file'"
-></app-file-loader>
-<app-input 
-    [labelName]="'Window width'"
-    [inputType]="'number'" 
-></app-input>
-<app-input 
-    [labelName]="'Step length'"
-    [inputType]="'number'" 
-></app-input>
-<button>Generate chart</button>
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <app-file-loader
+        [labelName]="'Upload file'"
+        [formController]="form.controls.fileLoader">
+    </app-file-loader>
+    <app-alert-box 
+        [errors]="form.controls.fileLoader.errors" 
+        [ifSubmitted]="submitted">
+    </app-alert-box>
+    <br>
+    <app-input 
+        [labelName]="'Window width (bp)'"
+        [inputType]="'number'"
+        [formController]="form.controls.window"
+        [errors]="form.controls.window.errors" 
+        [ifSubmitted]="submitted">
+    </app-input>
+    <app-alert-box 
+        [errors]="form.controls.window.errors" 
+        [ifSubmitted]="submitted">
+    </app-alert-box>
+    <br>
+    <app-input 
+        [labelName]="'Step size (bp)'"
+        [inputType]="'number'"
+        [formController]="form.controls.step"
+        [errors]="form.controls.step.errors" 
+        [ifSubmitted]="submitted">
+    </app-input>
+    <app-alert-box 
+        [errors]="form.controls.step.errors" 
+        [ifSubmitted]="submitted">
+    </app-alert-box>
+    <hr>
+    <button type="submit">Generate Chart</button>
+</form>
