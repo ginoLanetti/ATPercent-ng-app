@@ -8,6 +8,8 @@ import { FileLoaderComponent } from 'src/shared/components/file-loader/file-load
 import { MainScreenComponent } from 'src/screens/main-screen/main-screen.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlertBoxComponent } from 'src/shared/components/alert-box/alert-box.component';
+import { PlotAreaComponent } from 'src/shared/components/plot-area/plot-area.component';
+import { PlotLogicComponent } from 'src/shared/components/plot-logic/plot-logic.component';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,9 @@ import { AlertBoxComponent } from 'src/shared/components/alert-box/alert-box.com
     InputComponent,
     FileLoaderComponent,
     MainScreenComponent,
-    AlertBoxComponent
-
+    AlertBoxComponent,
+    PlotAreaComponent,
+    PlotLogicComponent,
   ],
   imports: [
     BrowserModule,
