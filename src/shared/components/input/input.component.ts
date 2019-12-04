@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -8,7 +9,10 @@ import { Component, Input } from '@angular/core';
 })
 
 export class InputComponent {
-    @Input() labelName: string
-    @Input() inputType: string 
-    
+    @Input() labelName: string;
+    @Input() inputType: string;
+    @Input() formController: FormControl;
+    @Input() errors: any;
+    @Input() ifSubmitted: boolean;
+
 }
