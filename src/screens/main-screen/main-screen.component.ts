@@ -17,10 +17,10 @@ export class MainScreenComponent implements OnInit {
         this.buildForm();
     }
     submit(): void {
+        this.submitted = true;
         const {window, step, seqFileContent} = this.form.value;
         this.sequenceData = new SequenceDataModel(window, step, seqFileContent);
-        this.submitted = true;
-        console.log(seqFileContent);
+        // console.log(this.sequenceData);
     }
     private buildForm(): void {
         this.form = this.formBuilder.group({

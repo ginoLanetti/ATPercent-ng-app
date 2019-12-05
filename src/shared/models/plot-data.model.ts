@@ -5,7 +5,7 @@ export class PlotDataModel {
     public markerSize: number;
     public dataPoints: Array<object>;
 
-    constructor(name: string, dataPoints: Array<object> ) {
+    constructor(name: string, dataPoints: Array<object>) {
         this.name = name;
         this.type = 'line';
         this.showInLegend = true;
