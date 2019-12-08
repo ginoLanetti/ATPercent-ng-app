@@ -7,7 +7,7 @@ export class PlotDataModel {
 
     constructor(name: string, dataPoints: Array<object>) {
         this.name = name;
-        this.type = 'line';
+        this.type = 'spline';
         this.showInLegend = true;
         this.markerSize = 0;
         this.dataPoints = dataPoints;

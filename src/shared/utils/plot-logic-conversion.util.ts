@@ -21,41 +21,43 @@ export const returnSequencesAndLabels = (fileContent: string): SequencesAndLabel
   };
   return sequencesAndLabels;
 };
-export const returnATPercent = (sequence: string, startPosition: number, window: number): number => {
-  // calculating average AT % for given window starting from startPosition
+export const returnATPercent = (sequence: string, startPosition: number, windowWidth: number): number => {
+  // calculating average AT % for given windowWidth starting from startPosition
   let countAT = 0;
-  for (let i = startPosition; i < (startPosition + window); i++) {
+  for (let i = startPosition; i < (startPosition + windowWidth); i++) {
     const letterAOrT = (sequence[i] === 'a') || (sequence[i] === 't');
     if (letterAOrT) { countAT++; }
   }
-  return (countAT / window) * 100;
+  return (countAT /  windowWidth) * 100;
 };
-export const returnXs = (sequence: string, window: number, step: number): Array<number> => {
+export const returnXs = (sequence: string, windowWidth: number, step: number): Array<number> => {
   // creating array of positions for given sequence (X axis values)
   const positions = [];
-  const lastWindowPosition = sequence.length - window;
-  for (let position = 0; position < lastWindowPosition; position += step) {
+  const lastWindowPosition = sequence.length - windowWidth;
+  for (let position:number = 0; position < lastWindowPosition; position += step /* <---???? */ ) {
     positions.push(position);
+    console.log(positions)
   }
-  const notFullyCovered = positions[positions.length - 1] + window < sequence.length;
+  const notFullyCovered = positions[positions.length - 1] + windowWidth < sequence.length;
   if (notFullyCovered) { positions.push(lastWindowPosition); }
   return positions;
 };
 
-export const returnYs = (positions: Array<number>, sequence: string, window: number): Array<number> => {
-  // creating array of AT% for each window for given sequence (Y axis values)
+export const returnYs = (positions: Array<number>, sequence: string, windowWidth: number): Array<number> => {
+  // creating array of AT% for each windowWidth for given sequence (Y axis values)
   const atPercentArray = positions.map(position => (
-    returnATPercent(sequence, position, window)
+    returnATPercent(sequence, position, windowWidth)
+    
   ));
   return atPercentArray;
 };
 
-export const returnPlotDataset = (labels: Array<string>, sequences: Array<string>, window: number, step: number): PlotDataModel[] => {
+export const returnPlotDataset = (labels: Array<string>, sequences: Array<string>, windowWidth: number, step: number): PlotDataModel[] => {
   // creating dataset for plot rendering
   const multipleXYDatasets = [];
   for (const [seqIndex, sequence] of sequences.entries()) {
-    const xValues = returnXs(sequence, window, step);
-    const yValues = returnYs(xValues, sequence, window);
+    const xValues = returnXs(sequence, windowWidth, step);
+    const yValues = returnYs(xValues, sequence, windowWidth);
     const singleXYDataset: Array<object> = xValues.map((value, valueIndex) => (
       { x: value, y: yValues[valueIndex] }
     ));

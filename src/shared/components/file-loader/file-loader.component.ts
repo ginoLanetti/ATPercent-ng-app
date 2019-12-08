@@ -18,7 +18,6 @@ export class FileLoaderComponent {
         fileReader.readAsText(this.file);
         fileReader.onload = () => {
             this.formController.setValue(fileReader.result);
-            console.log(this.formController.value);
         };
     }
 }

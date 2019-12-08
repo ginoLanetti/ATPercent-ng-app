@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { NgxsModule } from '@ngxs/store';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { InputComponent } from 'src/shared/components/input/input.component';
 import { FileLoaderComponent } from 'src/shared/components/file-loader/file-loader.component';
@@ -24,6 +25,9 @@ import { PlotAreaComponent } from 'src/shared/components/plot-area/plot-area.com
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    NgxsModule.forRoot([
+      // to fill
+    ])
 
   ],
   providers: [],

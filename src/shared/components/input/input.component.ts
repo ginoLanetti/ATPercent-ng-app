@@ -14,5 +14,4 @@ export class InputComponent {
     @Input() formController: FormControl;
     @Input() errors: any;
     @Input() ifSubmitted: boolean;
-
 }

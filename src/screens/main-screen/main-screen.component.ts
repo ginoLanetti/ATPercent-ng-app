@@ -11,16 +11,21 @@ export class MainScreenComponent implements OnInit {
     form: FormGroup;
     submitted: boolean;
     sequenceData: SequenceDataModel;
-
+    //https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=<TUTAJ GI_NUMBER SEKWENCJI>&rettype=fasta&retmode=text
+    //https://rest.ensembl.org/sequence/id/<ID_SEWENCJI>?content-type=application/json
     constructor(private formBuilder: FormBuilder) {}
     ngOnInit() {
         this.buildForm();
     }
     submit(): void {
         this.submitted = true;
-        const {window, step, seqFileContent} = this.form.value;
-        this.sequenceData = new SequenceDataModel(window, step, seqFileContent);
-        // console.log(this.sequenceData);
+        const { window, step, seqFileContent} = this.form.value;
+
+        if (this.form.valid) {
+            const stepInt = parseInt(step);
+            const windowInt = parseInt(window)
+            this.sequenceData = new SequenceDataModel(windowInt, stepInt, seqFileContent);
+        }
     }
     private buildForm(): void {
         this.form = this.formBuilder.group({
