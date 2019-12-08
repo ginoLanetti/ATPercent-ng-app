@@ -17,8 +17,7 @@ export class FileLoaderComponent {
         const fileReader = new FileReader();
         fileReader.readAsText(this.file);
         fileReader.onload = () => {
-            console.log(fileReader.result);
-            this.formController.setValue(fileReader.result)
+            this.formController.setValue(fileReader.result);
         };
     }
 }

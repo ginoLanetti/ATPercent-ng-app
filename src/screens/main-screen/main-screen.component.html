@@ -1,10 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
     <app-file-loader
         [labelName]="'Upload file'"
-        [formController]="form.controls.fileLoader">
+        [formController]="form.controls.seqFileContent">
     </app-file-loader>
     <app-alert-box 
-        [errors]="form.controls.fileLoader.errors" 
+        [errors]="form.controls.seqFileContent.errors" 
         [ifSubmitted]="submitted">
     </app-alert-box>
     <br>
@@ -34,3 +34,7 @@
     <hr>
     <button type="submit">Generate Chart</button>
 </form>
+<hr>
+<app-plot-area
+    [sequenceData]="sequenceData">
+</app-plot-area>
