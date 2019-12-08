@@ -38,3 +38,9 @@
 <app-plot-area
     [sequenceData]="sequenceData">
 </app-plot-area>
+<div *ngIf="submitted">
+    <label>Plot name: </label>
+    <input type="text" [formControl]="plotNameControl" >
+    <button type="button" (click)="savePlot()">Save plot</button>
+</div>
+

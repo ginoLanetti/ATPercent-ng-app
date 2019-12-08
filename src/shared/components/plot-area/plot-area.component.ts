@@ -6,6 +6,7 @@ import * as PlotLogic from '../../utils/plot-logic-conversion.util';
 import  { returnChart } from './../../utils/plot-object-template.util';
 
 
+
 @Component({
     selector: 'app-plot-area',
     templateUrl: './plot-area.component.html',
@@ -14,21 +15,19 @@ import  { returnChart } from './../../utils/plot-object-template.util';
 export class PlotAreaComponent implements OnInit {
     @Input() sequenceData: SequenceDataModel;
 
+
     ngOnChanges(changes: SimpleChanges): void {
         const dataToConvert = changes.sequenceData.currentValue;
         const finalDataset = this.convertSequenceDatatoPlotData(dataToConvert);
-        console.log(finalDataset)
         const chart = returnChart(finalDataset)
         chart.render();
 
     }
     ngOnInit() {
-
         
     }
-    
+
     private convertSequenceDatatoPlotData(sequenceData: SequenceDataModel): PlotDataModel[] {
-        console.log(sequenceData)
         const { step , seqFileContent } = sequenceData;
         const windowWidth = sequenceData.window;
         const sequencesAndLabels = PlotLogic.returnSequencesAndLabels(seqFileContent);
@@ -37,6 +36,6 @@ export class PlotAreaComponent implements OnInit {
         return mulitpleXYDatasets;
 
     }
-
+    
 
 }
