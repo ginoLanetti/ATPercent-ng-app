@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxsModule } from '@ngxs/store';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin'
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { InputComponent } from 'src/shared/components/input/input.component';
@@ -10,6 +13,9 @@ import { MainScreenComponent } from 'src/screens/main-screen/main-screen.compone
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlertBoxComponent } from 'src/shared/components/alert-box/alert-box.component';
 import { PlotAreaComponent } from 'src/shared/components/plot-area/plot-area.component';
+import { PlotsState } from 'src/shared/state/plot.state';
+import { PlotsScreenComponent } from 'src/screens/plots-screen/plots-screen.component';
+
 
 
 @NgModule({
@@ -20,14 +26,20 @@ import { PlotAreaComponent } from 'src/shared/components/plot-area/plot-area.com
     MainScreenComponent,
     AlertBoxComponent,
     PlotAreaComponent,
+    PlotsScreenComponent
+    
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
     NgxsModule.forRoot([
-      // to fill
-    ])
+      PlotsState
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot()
+    
 
   ],
   providers: [],

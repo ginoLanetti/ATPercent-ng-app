@@ -12,6 +12,6 @@ export class InputComponent {
     @Input() labelName: string;
     @Input() inputType: string;
     @Input() formController: FormControl;
-    @Input() errors: any;
     @Input() ifSubmitted: boolean;
 }
+

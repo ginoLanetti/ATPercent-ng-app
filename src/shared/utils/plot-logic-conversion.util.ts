@@ -36,7 +36,6 @@ export const returnXs = (sequence: string, windowWidth: number, step: number): A
   const lastWindowPosition = sequence.length - windowWidth;
   for (let position:number = 0; position < lastWindowPosition; position += step /* <---???? */ ) {
     positions.push(position);
-    console.log(positions)
   }
   const notFullyCovered = positions[positions.length - 1] + windowWidth < sequence.length;
   if (notFullyCovered) { positions.push(lastWindowPosition); }
@@ -61,7 +60,7 @@ export const returnPlotDataset = (labels: Array<string>, sequences: Array<string
     const singleXYDataset: Array<object> = xValues.map((value, valueIndex) => (
       { x: value, y: yValues[valueIndex] }
     ));
-    multipleXYDatasets.push(new PlotDataModel(labels[seqIndex], singleXYDataset));
+    multipleXYDatasets.push(new PlotDataModel({name: labels[seqIndex], dataPoints: singleXYDataset, type:'spline', showInLegend: true, markerSize: 0}));
   }
   return multipleXYDatasets;
 };

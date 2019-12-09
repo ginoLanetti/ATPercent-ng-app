@@ -12,7 +12,6 @@
         [labelName]="'Window width (bp)'"
         [inputType]="'number'"
         [formController]="form.controls.window"
-        [errors]="form.controls.window.errors" 
         [ifSubmitted]="submitted">
     </app-input>
     <app-alert-box 
@@ -24,7 +23,6 @@
         [labelName]="'Step size (bp)'"
         [inputType]="'number'"
         [formController]="form.controls.step"
-        [errors]="form.controls.step.errors" 
         [ifSubmitted]="submitted">
     </app-input>
     <app-alert-box 
@@ -36,5 +34,7 @@
 </form>
 <hr>
 <app-plot-area
-    [sequenceData]="sequenceData">
+    [sequenceData]="sequenceData"
+    [valid]="valid">
 </app-plot-area>
+

@@ -1,4 +1,11 @@
-   <div>
-        <div id="chartContainer" style="height: 370px; width: 100%;"><div>
-   </div>
+<div>
+     <div *ngIf="valid">
+          <label>Plot name: </label>
+          <input type="text" [formControl]="plotNameControl" >
+          <button type="button" (click)="savePlot()">Save plot</button>
+     </div>
+     <div id="chartContainer" style="height: 370px; width: 100%;"><div>
+
+</div> 
+
    
