@@ -29,10 +29,9 @@
         [errors]="form.controls.step.errors" 
         [ifSubmitted]="submitted">
     </app-alert-box>
-    <hr>
+    <br>
     <button type="submit">Generate Chart</button>
 </form>
-<hr>
 <app-plot-area
     [sequenceData]="sequenceData"
     [valid]="valid">

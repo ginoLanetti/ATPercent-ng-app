@@ -1,8 +1,10 @@
-import { PlotDataModel } from "../models/plot-data.model";
+
+import { ChartDataModel } from '../models/chart-data.model';
+import { PlotDataModel } from '../models/plot-data.model';
 
 export class SavePlot {
     static readonly type = '[PLOT] Save plot'
-    constructor(public plotData: PlotDataModel[]) {}
+    constructor(public chartData: ChartDataModel) {}
 }
 
 export class GetPlotsData {
@@ -11,5 +13,10 @@ export class GetPlotsData {
 
 export class RemovePlot {
     static readonly type = '[PLOT] Remove plot'
-    constructor(public plotData: string) {}
+    constructor(public chartNameToRemove: string) {}
+}
+
+export class AddDataToRerender {
+    static readonly type = '[PLOT] Add data to rerender'
+    constructor(public dataToRerender: Array<PlotDataModel>) {}
 }

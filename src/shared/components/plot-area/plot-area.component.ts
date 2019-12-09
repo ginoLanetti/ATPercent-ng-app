@@ -1,12 +1,15 @@
 
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, SimpleChanges } from '@angular/core';
 import { PlotDataModel } from '../../models/plot-data.model';
 import { SequenceDataModel } from 'src/shared/models/sequence-data.model';
 import * as PlotLogic from '../../utils/plot-logic-conversion.util';
 import { returnChart } from './../../utils/plot-object-template.util';
-import { Store } from '@ngxs/store';
+import { Store, Select } from '@ngxs/store';
 import { FormControl } from '@angular/forms';
 import { SavePlot } from 'src/shared/state/plot.actions';
+import { ChartDataModel } from 'src/shared/models/chart-data.model';
+import { Observable, Subscription } from 'rxjs';
+import { PlotsState } from 'src/shared/state/plot.state';
 
 
 @Component({
@@ -14,29 +17,38 @@ import { SavePlot } from 'src/shared/state/plot.actions';
     templateUrl: './plot-area.component.html',
     styleUrls: ['./plot-area.component.scss']
 })
-export class PlotAreaComponent implements OnInit {
+export class PlotAreaComponent implements OnInit, OnDestroy {
     @Input() valid: boolean;
     @Input() sequenceData: SequenceDataModel
-    plotNameControl: FormControl;
+    @Select(PlotsState.reRender) reRenderData$: Observable<Array<PlotDataModel>>
     plotData: PlotDataModel[]
+    reRenderSubscription: Subscription
+    chartNameControl: FormControl;
+
+    
     constructor(private store: Store) {
     }
     ngOnChanges(changes: SimpleChanges): void {
         const dataToConvert = changes.sequenceData.currentValue;
-        const finalDataset = this.convertSequenceDatatoPlotData(dataToConvert);
-        const chart = returnChart(finalDataset)
+        const finalDataset = this.convertSequenceDatatoPlotData(dataToConvert)
         this.plotData = finalDataset
-        chart.render();
+        this.createChart(finalDataset)
     }
     ngOnInit() {
-        this.plotNameControl = new FormControl('')
-    }
+        this.chartNameControl = new FormControl('')
+        const reRenderSubscription = this.reRenderData$.subscribe(data => {
+            this.createChart(data)
+        })
 
+    }
+    ngOnDestroy(): void {
+        this.reRenderSubscription.unsubscribe()
+        
+    }
     private savePlot(){
-        const plotName: string = this.plotNameControl.value
-        const namedPlotData = []
-        this.plotData.forEach(plot => namedPlotData.push(new PlotDataModel(plot, plotName)))
-        this.store.dispatch(new SavePlot(namedPlotData))
+        const chartName: string = this.chartNameControl.value
+        const newChartData = new ChartDataModel(chartName, this.plotData)
+        this.store.dispatch(new SavePlot(newChartData))
     }
     private convertSequenceDatatoPlotData(sequenceData: SequenceDataModel): PlotDataModel[] {
         const { step , seqFileContent } = sequenceData;
@@ -45,8 +57,9 @@ export class PlotAreaComponent implements OnInit {
         const { sequences, labels } = sequencesAndLabels;
         const mulitpleXYDatasets = PlotLogic.returnPlotDataset(labels, sequences, windowWidth, step);
         return mulitpleXYDatasets;
-
     }
-
-
+    private createChart(chartData) {
+        const chart = returnChart(chartData)
+        chart.render();
+    }
 }
