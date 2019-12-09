@@ -1,37 +1,37 @@
-import { SequenceDataModel } from "../models/sequence-data.model";
+import { PlotDataModel } from "../models/plot-data.model";
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { SavePlot, GetPlotData } from './plot.actions';
+import { SavePlot, GetPlotsData } from '../state/plot.actions';
 import { setInLocalStorage, getFromLocalStorage } from '../services/local-storage.service';
 
-interface PlotStateModel {
-    sequencesData: SequenceDataModel[]
+interface PlotsStateModel {
+    plotsData: PlotDataModel[][]
 }
-
-@State<PlotStateModel>({
-    name: 'plotData',
+@State<PlotsStateModel>({
+    name: 'plotsData',
     defaults: {
-        sequencesData: []
+        plotsData: []
     }
 })
-export class PlotState {
+export class PlotsState{
     @Selector()
-    static plots(state: PlotStateModel): SequenceDataModel[] {
-        return state.sequencesData
+    static plots(state: PlotsStateModel): PlotDataModel[][] {
+        return state.plotsData
     }
     @Action(SavePlot)
-    savePlot(context: StateContext<PlotStateModel>, action: SavePlot){
-        const currentState = context.getState().sequencesData
-        const newSequencesData = [...currentState, action.sequenceData]
-        setInLocalStorage('sequencesData', newSequencesData)
+    savePlot(context: StateContext<PlotsStateModel>, action: SavePlot){
+        const currentPlotsData = context.getState().plotsData
+        const newPlotsData = currentPlotsData ? [...currentPlotsData, action.plotData] : [action.plotData]
+        setInLocalStorage('plotsData', newPlotsData)
         context.patchState({
-            sequencesData: newSequencesData
+            plotsData: newPlotsData
         })
     }
-    @Action(GetPlotData)
-    getPlotData(context: StateContext<PlotStateModel>) {
-        const dataFromLocalStorage = getFromLocalStorage('sequencesData')
+    @Action(GetPlotsData)
+    getPlotData(context: StateContext<PlotsStateModel>){
+        const localStorageData = getFromLocalStorage('plotsData');
         context.patchState({
-            sequencesData: dataFromLocalStorage
+            plotsData: localStorageData
         })
     }
+
 }

@@ -13,7 +13,7 @@ export class AlertBoxComponent {
         if (this.errors.min) {
             return `This value should not be lower than ${this.errors.min.min}`;
         } else if (this.errors.required) {
-            return 'This field is required';
+            return 'This field is required'
         }
 
     }

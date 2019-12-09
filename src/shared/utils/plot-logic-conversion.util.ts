@@ -60,7 +60,7 @@ export const returnPlotDataset = (labels: Array<string>, sequences: Array<string
     const singleXYDataset: Array<object> = xValues.map((value, valueIndex) => (
       { x: value, y: yValues[valueIndex] }
     ));
-    multipleXYDatasets.push(new PlotDataModel(labels[seqIndex], singleXYDataset));
+    multipleXYDatasets.push(new PlotDataModel({name: labels[seqIndex], dataPoints: singleXYDataset, type:'spline', showInLegend: true, markerSize: 0}));
   }
   return multipleXYDatasets;
 };

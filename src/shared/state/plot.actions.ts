@@ -1,18 +1,15 @@
-import { SequenceDataModel } from '../models/sequence-data.model'
+import { PlotDataModel } from "../models/plot-data.model";
 
 export class SavePlot {
-    static readonly type = '[PLOT] Save'
-
-    constructor(public sequenceData: SequenceDataModel) {}
+    static readonly type = '[PLOT] Save plot'
+    constructor(public plotData: PlotDataModel[]) {}
 }
 
-export class GetPlotData {
-    static readonly type = '[PLOT] Get plot data'
-    
+export class GetPlotsData {
+    static readonly type = '[LocalStorage] Get plot data'
 }
 
 export class RemovePlot {
-    static readonly type = '[PLOT] Remove'
-
-    constructor(public payload: string) {}
+    static readonly type = '[PLOT] Remove plot'
+    constructor(public plotData: string) {}
 }

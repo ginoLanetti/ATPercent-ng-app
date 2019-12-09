@@ -1,33 +1,30 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { PlotState } from 'src/shared/state/plot.state';
+import { PlotsState } from 'src/shared/state/plot.state';
 import { Observable, Subscription } from 'rxjs';
-import { SequenceDataModel } from 'src/shared/models/sequence-data.model';
-import { GetPlotData } from 'src/shared/state/plot.actions';
+import { PlotDataModel } from 'src/shared/models/plot-data.model';
+import { getFromLocalStorage } from 'src/shared/services/local-storage.service';
+import { GetPlotsData } from 'src/shared/state/plot.actions';
 
 @Component({
+    selector:'app-plots-screen',
     templateUrl: './plots-screen.component.html',
-    selector: 'app-plots-screen',
     styleUrls: ['./plots-screen.component.scss']
-
 })
-export class PlotsScreenComponent implements OnInit, OnDestroy{
-    @Select(PlotState.plots) plotsData$: Observable<SequenceDataModel[]>
-    plotsDataSubcription: Subscription;
-    plotsData: SequenceDataModel[];
-
+export class PlotsScreenComponent implements OnInit, OnDestroy {
+    @Select(PlotsState.plots) plotsData$: Observable<PlotDataModel[]>
+    plotData: PlotDataModel[];
+    plotDataSubscription: Subscription;
     constructor(private store: Store) {
-
     }
-
-    ngOnInit(){
-        this.plotsDataSubcription = this.plotsData$.subscribe((plotsData) => this.plotsData = plotsData)
+    ngOnInit(): void {
+        this.plotDataSubscription = this.plotsData$.subscribe((data) => this.plotData = data)
         this.fetchPlotsFromLocalStorage()
     }
     ngOnDestroy(): void {
-        this.plotsDataSubcription.unsubscribe()
+        this.plotDataSubscription.unsubscribe()
     }
     private fetchPlotsFromLocalStorage() {
-        this.store.dispatch(new GetPlotData())
+        this.store.dispatch(new GetPlotsData())
     } 
 }
