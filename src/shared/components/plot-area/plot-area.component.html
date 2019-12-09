@@ -1,11 +1,14 @@
-<div>
-     <div *ngIf="valid">
+<div class="plot-area">  
+     <div id="chartContainer" style="height: 370px; width: 90%; margin: 0 auto;">
+          <ng-template  #placeholder>
+               <h2>Your plot will render here</h2>    
+          </ng-template>
+     </div>
+     <div *ngIf="valid; else placeholder">
           <label>Plot name: </label>
-          <input type="text" [formControl]="plotNameControl" >
+          <input type="text" [formControl]="chartNameControl" >
           <button type="button" (click)="savePlot()">Save plot</button>
      </div>
-     <div id="chartContainer" style="height: 370px; width: 100%;"><div>
-
 </div> 
 
    

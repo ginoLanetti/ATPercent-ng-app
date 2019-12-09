@@ -18,6 +18,7 @@ import { PlotsScreenComponent } from 'src/screens/plots-screen/plots-screen.comp
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { PlotsScreenComponent } from 'src/screens/plots-screen/plots-screen.comp
     MainScreenComponent,
     AlertBoxComponent,
     PlotAreaComponent,
-    PlotsScreenComponent
+    PlotsScreenComponent,
+
     
   ],
   imports: [
