@@ -4,9 +4,9 @@
                <h2>Your plot will render here</h2>    
           </ng-template>
      </div>
-     <div *ngIf="valid; else placeholder">
-          <label>Plot name: </label>
-          <input type="text" [formControl]="chartNameControl" >
+     <div *ngIf="sequenceData; else placeholder">
+          <app-input [ifSubmitted]="submitted" [formController]="chartNameControl"></app-input>
+          <app-alert-box [errors]="chartNameControl.errors" [ifSubmitted]="submitted"></app-alert-box>
           <button type="button" (click)="savePlot()">Save plot</button>
      </div>
 </div> 

@@ -14,6 +14,8 @@ export class AlertBoxComponent {
             return `This value should not be lower than ${this.errors.min.min}`;
         } else if (this.errors.required) {
             return 'This field is required'
+        } else if (this.errors.notUnique) {
+            return 'Please type unique name'
         }
 
     }

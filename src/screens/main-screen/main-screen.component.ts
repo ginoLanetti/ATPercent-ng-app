@@ -35,7 +35,7 @@ export class MainScreenComponent implements OnInit {
         this.form = this.formBuilder.group({
             window: ['', [Validators.required, Validators.min(1)]],
             step: ['', [Validators.required, Validators.min(1)]],
-            seqFileContent: [null, Validators.required]
+            seqFileContent: [null, Validators.required],
         });
     }
 }

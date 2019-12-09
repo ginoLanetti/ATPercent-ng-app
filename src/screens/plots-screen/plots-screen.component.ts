@@ -6,6 +6,7 @@ import { PlotDataModel } from 'src/shared/models/plot-data.model';
 import { getFromLocalStorage } from 'src/shared/services/local-storage.service';
 import { GetPlotsData, RemovePlot, AddDataToRerender } from 'src/shared/state/plot.actions';
 import { ChartDataModel } from 'src/shared/models/chart-data.model';
+import { Router } from '@angular/router';
 
 @Component({
     selector:'app-plots-screen',
@@ -18,7 +19,7 @@ export class PlotsScreenComponent implements OnInit, OnDestroy {
     tableHeaders = ['Plot Name', 'Re-render', "Remove"]
     tableData = [];
     plotDataSubscription: Subscription;
-    constructor(private store: Store) {
+    constructor(private store: Store, private router: Router) {
     }
     ngOnInit(): void {
         this.fetchPlotsFromLocalStorage()
@@ -31,7 +32,7 @@ export class PlotsScreenComponent implements OnInit, OnDestroy {
     }
     reRender(plotData: Array<PlotDataModel>) {
         this.store.dispatch(new AddDataToRerender(plotData))
-        console.log(plotData)
+        this.router.navigate(['/new-plot'])
     }
     removePlot(plotName: string) {
         this.store.dispatch(new RemovePlot(plotName))
