@@ -15,6 +15,8 @@ import { AlertBoxComponent } from 'src/shared/components/alert-box/alert-box.com
 import { PlotAreaComponent } from 'src/shared/components/plot-area/plot-area.component';
 import { PlotsState } from 'src/shared/state/plot.state';
 import { PlotsScreenComponent } from 'src/screens/plots-screen/plots-screen.component';
+import { HeaderComponent } from 'src/shared/components/header/header.component';
+
 
 
 
@@ -28,7 +30,7 @@ import { PlotsScreenComponent } from 'src/screens/plots-screen/plots-screen.comp
     AlertBoxComponent,
     PlotAreaComponent,
     PlotsScreenComponent,
-
+    HeaderComponent
     
   ],
   imports: [
