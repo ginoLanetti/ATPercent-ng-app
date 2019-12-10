@@ -27,10 +27,9 @@ export class PlotAreaComponent implements OnInit, OnDestroy {
     chartNameControl: FormControl;
     chartNames: Array<string>
     submitted: boolean;
-
     
-    constructor(private store: Store) {
-    }
+    constructor(private store: Store) {}
+
     ngOnChanges(changes: SimpleChanges): void {
         if(this.sequenceData){
             const dataToConvert = changes.sequenceData.currentValue;
@@ -39,6 +38,7 @@ export class PlotAreaComponent implements OnInit, OnDestroy {
             this.createChart(finalDataset)
         }
     }
+
     ngOnInit() {
         this.chartNameControl = new FormControl('', [Validators.required])
         this.reRenderSubscription = this.reRenderData$.subscribe(data => {
@@ -50,10 +50,11 @@ export class PlotAreaComponent implements OnInit, OnDestroy {
             ))
         })
     }
+
     ngOnDestroy(): void {
-        this.reRenderSubscription.unsubscribe()
-        
+        this.reRenderSubscription.unsubscribe() 
     }
+
     private savePlot() {
         const nameExists = this.checkIfNameExists()
         if(nameExists) {
@@ -65,6 +66,7 @@ export class PlotAreaComponent implements OnInit, OnDestroy {
             this.store.dispatch(new SavePlot(newChartData))
         }
     }
+    
     private checkIfNameExists(): boolean {
         const searchName = this.chartNameControl.value
         return !!this.chartNames.find(name => (
@@ -82,7 +84,7 @@ export class PlotAreaComponent implements OnInit, OnDestroy {
         return mulitpleXYDatasets;
     }
     private createChart(chartData) {
-        const chart = returnChart(chartData)
+        const chart = returnChart(chartData);
         chart.render();
     }
 }

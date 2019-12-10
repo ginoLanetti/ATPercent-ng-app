@@ -19,9 +19,9 @@ export class AlertBoxComponent {
             } else if (this.inputErrors.notUnique) {
                 return 'Please type unique name'
             } 
-        } else if (this.formErrors){
+        } else if (this.formErrors) {
             if (this.formErrors.sequenceMissing) {
-                return 'sequence is required'
+                return 'sequence is required';
 
             }
         }

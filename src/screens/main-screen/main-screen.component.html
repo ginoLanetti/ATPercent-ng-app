@@ -1,61 +1,61 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-    <select
-        formControlName="sequenceSource">
-        <option *ngFor="let source of sequenceSources" [value]="source.value">
-            {{ source.label }}
-        </option>
-    </select>
+  <select formControlName="sequenceSource">
+    <option *ngFor="let source of sequenceSources" [value]="source.value">
+      {{ source.label }}
+    </option>
+  </select>
+  <ng-container *ngIf="form.value.sequenceSource === sequenceSources[0].value">
     <app-file-loader
-        *ngIf="form.value.sequenceSource === sequenceSources[0].value"
-        [labelName]="'Upload file'"
-        [formController]="form.controls.seqFileContent">
+      [labelName]="'Upload file'"
+      [formController]="form.controls.seqFileContent"
+    >
     </app-file-loader>
     <p *ngIf="form.value.seqFileContent">✔️</p>
-    <div *ngIf="form.value.sequenceSource === sequenceSources[1].value">
-        <app-input
-            [labelName]="'Sequence id number'"
-            [inputType]="'string'"
-            [formController]="form.controls.sequenceIdNum"
-            [ifSubmitted]="submitted">
-        </app-input>
-        <button type="button" (click)="getSequence()">Download</button>
-        <p *ngIf="downloadedData; else empty">✔️</p>
-        <ng-template  #empty>
-            <p>sequence not loaded</p>    
-        </ng-template>
-        
-    </div>
-    <app-alert-box 
-        [formErrors]="form.errors"
-        [inputErrors]="form.controls.seqFileContent.errors" 
-        [ifSubmitted]="submitted">
+    <app-alert-box
+      [inputErrors]="form.controls.seqFileContent.errors"
+      [ifSubmitted]="submitted"
+    >
     </app-alert-box>
-    <br>
-    <app-input 
-        [labelName]="'Window width (bp)'"
-        [inputType]="'number'"
-        [formController]="form.controls.window"
-        [ifSubmitted]="submitted">
+  </ng-container>
+  <ng-container *ngIf="form.value.sequenceSource === sequenceSources[1].value">
+    <app-input
+      [labelName]="'Sequence id number'"
+      [inputType]="'string'"
+      [formController]="form.controls.sequenceIdNum"
+      [ifSubmitted]="submitted"
+    >
     </app-input>
-    <app-alert-box 
-        [inputErrors]="form.controls.window.errors" 
-        [ifSubmitted]="submitted">
-    </app-alert-box>
-    <br>
-    <app-input 
-        [labelName]="'Step size (bp)'"
-        [inputType]="'number'"
-        [formController]="form.controls.step"
-        [ifSubmitted]="submitted">
-    </app-input>
-    <app-alert-box 
-        [inputErrors]="form.controls.step.errors" 
-        [ifSubmitted]="submitted">
-    </app-alert-box>
-    <br>
-    <button type="submit">Generate Chart</button>
+    <button type="button" (click)="getSequence()">Download</button>
+    <p *ngIf="downloadedData; else empty">✔️</p>
+    <p *ngIf="submitted && !downloadedData">sequence not loaded</p>
+  </ng-container>
+  <br />
+  <app-input
+    [labelName]="'Window width (bp)'"
+    [inputType]="'number'"
+    [formController]="form.controls.window"
+    [ifSubmitted]="submitted"
+  >
+  </app-input>
+  <app-alert-box
+    [inputErrors]="form.controls.window.errors"
+    [ifSubmitted]="submitted"
+  >
+  </app-alert-box>
+  <br />
+  <app-input
+    [labelName]="'Step size (bp)'"
+    [inputType]="'number'"
+    [formController]="form.controls.step"
+    [ifSubmitted]="submitted"
+  >
+  </app-input>
+  <app-alert-box
+    [inputErrors]="form.controls.step.errors"
+    [ifSubmitted]="submitted"
+  >
+  </app-alert-box>
+  <br />
+  <button type="submit">Generate Chart</button>
 </form>
-<app-plot-area
-    [sequenceData]="sequenceData">
-</app-plot-area>
-
+<app-plot-area [sequenceData]="sequenceData"></app-plot-area>
