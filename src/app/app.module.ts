@@ -16,8 +16,8 @@ import { PlotAreaComponent } from 'src/shared/components/plot-area/plot-area.com
 import { PlotsState } from 'src/shared/state/plot.state';
 import { PlotsScreenComponent } from 'src/screens/plots-screen/plots-screen.component';
 import { HeaderComponent } from 'src/shared/components/header/header.component';
-
-
+import { HttpClientModule } from '@angular/common/http'
+import { AboutComponent } from 'src/screens/about/about.component';
 
 
 
@@ -30,11 +30,13 @@ import { HeaderComponent } from 'src/shared/components/header/header.component';
     AlertBoxComponent,
     PlotAreaComponent,
     PlotsScreenComponent,
-    HeaderComponent
+    HeaderComponent,
+    AboutComponent
     
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -42,7 +44,8 @@ import { HeaderComponent } from 'src/shared/components/header/header.component';
       PlotsState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot()
+    NgxsLoggerPluginModule.forRoot(),
+    
     
 
   ],

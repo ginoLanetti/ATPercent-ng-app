@@ -27,10 +27,9 @@ export class PlotAreaComponent implements OnInit, OnDestroy {
     chartNameControl: FormControl;
     chartNames: Array<string>
     submitted: boolean;
-
     
-    constructor(private store: Store) {
-    }
+    constructor(private store: Store) {}
+
     ngOnChanges(changes: SimpleChanges): void {
         if(this.sequenceData){
             const dataToConvert = changes.sequenceData.currentValue;
@@ -39,6 +38,7 @@ export class PlotAreaComponent implements OnInit, OnDestroy {
             this.createChart(finalDataset)
         }
     }
+
     ngOnInit() {
         this.chartNameControl = new FormControl('', [Validators.required])
         this.reRenderSubscription = this.reRenderData$.subscribe(data => {
@@ -49,12 +49,12 @@ export class PlotAreaComponent implements OnInit, OnDestroy {
                 datum.name
             ))
         })
-        console.log(this.chartNameControl.errors)
     }
+
     ngOnDestroy(): void {
-        this.reRenderSubscription.unsubscribe()
-        
+        this.reRenderSubscription.unsubscribe() 
     }
+
     private savePlot() {
         const nameExists = this.checkIfNameExists()
         if(nameExists) {
@@ -66,6 +66,7 @@ export class PlotAreaComponent implements OnInit, OnDestroy {
             this.store.dispatch(new SavePlot(newChartData))
         }
     }
+    
     private checkIfNameExists(): boolean {
         const searchName = this.chartNameControl.value
         return !!this.chartNames.find(name => (
@@ -75,13 +76,15 @@ export class PlotAreaComponent implements OnInit, OnDestroy {
     private convertSequenceDatatoPlotData(sequenceData: SequenceDataModel): PlotDataModel[] {
         const { step , seqFileContent } = sequenceData;
         const windowWidth = sequenceData.window;
-        const sequencesAndLabels = PlotLogic.returnSequencesAndLabels(seqFileContent);
+        const sequencesAndLabels = sequenceData.label 
+            ? {sequences: [sequenceData.seqFileContent], labels: [sequenceData.label]} 
+            : PlotLogic.returnSequencesAndLabels(seqFileContent);
         const { sequences, labels } = sequencesAndLabels;
         const mulitpleXYDatasets = PlotLogic.returnPlotDataset(labels, sequences, windowWidth, step);
         return mulitpleXYDatasets;
     }
     private createChart(chartData) {
-        const chart = returnChart(chartData)
+        const chart = returnChart(chartData);
         chart.render();
     }
 }
