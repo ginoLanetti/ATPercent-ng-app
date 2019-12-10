@@ -49,7 +49,6 @@ export class PlotAreaComponent implements OnInit, OnDestroy {
                 datum.name
             ))
         })
-        console.log(this.chartNameControl.errors)
     }
     ngOnDestroy(): void {
         this.reRenderSubscription.unsubscribe()
@@ -75,7 +74,9 @@ export class PlotAreaComponent implements OnInit, OnDestroy {
     private convertSequenceDatatoPlotData(sequenceData: SequenceDataModel): PlotDataModel[] {
         const { step , seqFileContent } = sequenceData;
         const windowWidth = sequenceData.window;
-        const sequencesAndLabels = PlotLogic.returnSequencesAndLabels(seqFileContent);
+        const sequencesAndLabels = sequenceData.label 
+            ? {sequences: [sequenceData.seqFileContent], labels: [sequenceData.label]} 
+            : PlotLogic.returnSequencesAndLabels(seqFileContent);
         const { sequences, labels } = sequencesAndLabels;
         const mulitpleXYDatasets = PlotLogic.returnPlotDataset(labels, sequences, windowWidth, step);
         return mulitpleXYDatasets;

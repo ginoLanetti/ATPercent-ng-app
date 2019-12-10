@@ -46,7 +46,6 @@ export const returnYs = (positions: Array<number>, sequence: string, windowWidth
   // creating array of AT% for each windowWidth for given sequence (Y axis values)
   const atPercentArray = positions.map(position => (
     returnATPercent(sequence, position, windowWidth)
-    
   ));
   return atPercentArray;
 };
