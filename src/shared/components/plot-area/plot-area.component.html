@@ -1,13 +1,13 @@
 <div class="plot-area">  
-     <div id="chartContainer" style="height: 370px; width: 90%; margin: 0 auto;" class="plot-area__chartContainer">
+     <div id="chartContainer" style="height: 370px; width: 90%; margin: 0 auto;" class="plot-area__chart-container">
           <ng-template  #placeholder>
-               <h2 class="plot-area__placeholder">Your plot will render here</h2>    
+               <div class="plot-area__placeholder">Your plot will render here</div>    
           </ng-template>
      </div>
-     <div *ngIf="plotData || !!(reRenderData$ | async).length; else placeholder">
-          <app-input [ifSubmitted]="submitted" [formController]="chartNameControl"></app-input>
+     <div *ngIf="plotData || !!(reRenderData$ | async).length; else placeholder" class="plot-area__save-plot">
+          <app-input [ifSubmitted]="submitted" [formController]="chartNameControl" class="plot-area__save-plot-input"></app-input>
+          <button type="button" (click)="savePlot()" class="plot-area__save-plot-button">Save plot</button>
           <app-alert-box [inputErrors]="chartNameControl.errors" [ifSubmitted]="submitted"></app-alert-box>
-          <button type="button" (click)="savePlot()">Save plot</button>
      </div>
 </div> 
 

@@ -1,5 +1,5 @@
-<section class="plot-screen" *ngIf="plotsData.length">
-  <table class="plot-screen__table">
+<section class="plot-screen">
+  <table class="plot-screen__table" *ngIf="plotsData.length">
     <thead>
       <tr>
         <th *ngFor="let header of tableHeaders">
@@ -33,4 +33,5 @@
       </tr>
     </tbody>
   </table>
+  <div *ngIf="!plotsData.length" class="plot-screen__placeholder">No plots saved. Let's create a new one!</div>
 </section>

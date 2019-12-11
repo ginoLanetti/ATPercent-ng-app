@@ -13,7 +13,7 @@
       >
       </app-file-loader>
       <div class="main-screen__form-element  main-screen__form-onload-message">
-        <p *ngIf="form.value.seqFileContent;" class="main-screen__form-tick-sign" >✔️</p>
+      <img src="../../assets/svg/check.svg" alt="loading..." width="55" *ngIf="form.value.seqFileContent" class="main-screen__form-tick-sign">
       </div>
       <app-alert-box
         [inputErrors]="form.controls.seqFileContent.errors"
@@ -35,8 +35,9 @@
       </app-input>
       <button type="button" (click)="getSequence()" class="main-screen__form-element main-screen__form-button-container"> <div class="main-screen__form-button-text">Download</div> </button>
       <div class="main-screen__form-element main-screen__form-onload-message">
-          <p *ngIf="downloadedData" class="main-screen__form-tick-sign">✔️</p>
-          <p *ngIf="!downloadedData">sequence not loaded</p>
+          <p *ngIf="!downloadedData && !fetchingData">sequence not loaded</p>
+          <img src="../../assets/svg/check.svg" alt="sequence downloaded" width="55" *ngIf="downloadedData && !fetchingData" class="main-screen__form-tick-sign">
+          <div *ngIf="fetchingData" class="main-screen__form-spinner"></div>
       </div>
     </ng-container>
     <app-input

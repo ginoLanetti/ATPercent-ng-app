@@ -17,12 +17,14 @@ export class MainScreenComponent implements OnInit {
         {label: 'Upload sequence file', value: 'uploaded'},
         {label: 'Download form ensembl database', value: 'downloaded'}
     ];
+    fetchingData: boolean;
     downloadedData: any;
 
     constructor(private formBuilder: FormBuilder, private fetchingSequences: FetchingSequencesService) {}
 
     ngOnInit() {
         this.buildForm();
+        this.subscribeSequenceSourceChange();
     }
     submit(): void {
         const { seqFileContent, sequenceSource } = this.form.value;
@@ -37,13 +39,16 @@ export class MainScreenComponent implements OnInit {
     }
     getSequence() {
         const { sequenceIdNum } = this.form.value;
+        this.fetchingData = true;
         this.fetchingSequences.fetchSequence(sequenceIdNum).subscribe(
             (data) => {
                 this.downloadedData = { sequence: data.seq, label: data.desc };
+                this.fetchingData = false;
             },
-            (error) => (
-                alert('There is no such sequence in the database. Check if sequence ID is correct')
-            )
+            (error) => {
+                alert('There is no such sequence in the database. Check if sequence ID is correct');
+                this.fetchingData = false;
+            }
         );
     }
 
@@ -64,6 +69,20 @@ export class MainScreenComponent implements OnInit {
             seqFileContent: [null, Validators.required],
             sequenceIdNum: [''],
             sequenceSource: [this.sequenceSources[0].value]
+        });
+    }
+
+    private subscribeSequenceSourceChange(): void {
+        const seqContentControl = this.form.controls.seqFileContent;
+        this.form.controls.sequenceSource.valueChanges.subscribe(
+            sequenceSource => {
+            if (sequenceSource === this.sequenceSources[1].value) {
+                seqContentControl.setValidators(null);
+            } else {
+                this.submitted = false;
+                seqContentControl.setValidators(Validators.required);
+            }
+            seqContentControl.updateValueAndValidity();
         });
     }
 }
