@@ -1,5 +1,17 @@
 .form__alert-box {
-    border:  1px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: -5rem;
+    top: -2rem;
+    width: 12rem;
+    padding: 0.5rem;
+    border:  1px solid darkmagenta;
+    border-radius: 0.5rem;
     background-color: mistyrose;
-    color: darkmagenta
+    color: darkmagenta;
+}
+.form__alert-box-text {
+    text-align: center;
 }

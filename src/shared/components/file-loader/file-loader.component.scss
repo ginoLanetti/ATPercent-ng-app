@@ -1,0 +1,33 @@
+@import "../../../variables-and-mixins.scss";
+
+.file-loader {
+    display: flex;
+    height: 100%;
+}
+.file-loader__button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+    background-color: $light-color;
+    border: 0.125rem solid $light-color;
+    box-shadow: 1px 1px 1px $light-shadow;
+    user-select: none;
+}
+.file-loader__button-container:hover {
+    background-color: $medium-color;
+    color: $whitish;
+    border: 0.125rem solid $medium-color;
+    box-shadow: 0.1rem 0.1rem 0.1rem $strong-color;
+}
+.file-loader__button-container:active {
+    background-color: $strong-color;
+    color: $whitish;
+    border: 0.125rem solid $strong-color;
+    box-shadow: inset -0.125rem -0.125rem 0.125rem $medium-color;
+}
+.file-loader__button-text{
+    text-align: center;
+    
+}

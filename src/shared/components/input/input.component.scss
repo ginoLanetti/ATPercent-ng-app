@@ -1,3 +1,18 @@
-.form__input--error{
+@import "../../../variables-and-mixins.scss";
+
+.form__input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form__input--error {
     border: 2px solid red;
+}
+.form__input-label {
+    text-align: center;
+}
+.form__input-field {
+    height: 25%;
+    border: 0.125rem solid $light-color;
+    box-shadow: 1px 1px 1px $light-color;
 }

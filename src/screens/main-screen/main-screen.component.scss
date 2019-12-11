@@ -1,6 +1,76 @@
-form{
-    display: flex;
-    width: 60%;
-    margin: 5vh auto;
-    justify-content: center;
+@import "../../variables-and-mixins.scss";
+
+.main-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 92.5vh;
+  margin: 0 auto;
+  width: 100%;
+  @include if-size(large) {
+    width: 70vw;
+  }
+}
+.main-screen__form {
+  height: 20%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 1.1rem; ;
+}
+.main-screen__form-element {
+  display: flex;
+  height: 5rem;
+  border-radius: 0.5rem;
+}
+.main-screen__form-select-element {
+  text-align: center;
+  text-align-last: center;
+  option {
+    text-align: left;
+  }
+  border: 0.125rem solid $light-color;
+  box-shadow: 1px 1px 1px $light-color;
+}
+.main-screen__form-select-element:focus {
+  outline: none;
+}
+.main-screen__form-button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: $light-color;
+  border: 0.125rem solid $light-color;
+  box-shadow: 0.125rem 0.125rem 0.125rem $light-shadow;
+  user-select: none;
+}
+.main-screen__form-button-container:hover {
+  background-color: $medium-color;
+  color: $whitish;
+  border: 0.125rem solid $medium-color;
+  box-shadow: 0.125rem 0.125rem 0.125rem $strong-color;
+}
+.main-screen__form-button-container:active {
+  background-color: $strong-color;
+  color: $whitish;
+  border: 0.125rem solid $strong-color;
+  box-shadow: inset -0.125rem -0.125rem 0.125rem $medium-color;
+}
+.main-screen__form-button-text{
+  text-align: center; 
+}
+.main-screen__form-onload-message{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-basis: 2rem;
+  p{
+    font-size: 0.75rem;
+    text-align: center;
+  }
+}
+app-alert-box {
+  position: relative;
 }

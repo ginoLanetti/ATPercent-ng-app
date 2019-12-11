@@ -6,10 +6,6 @@ export const returnChart = (finalDataset) => {
         animationEnabled: true,
         exportEnabled: true,
         colorSet: 'colorSet2',
-        title: {
-            text: 'ATPercent',
-            fontFamily: 'Calibri'
-        },
         toolTip: {
             shared: true
         },
