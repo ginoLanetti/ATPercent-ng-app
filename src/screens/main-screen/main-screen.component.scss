@@ -103,8 +103,8 @@
   height: 100%;
   margin: auto;
   box-sizing: border-box;
-  border: 1.7rem solid #efc050;
-  border-color: #efc050 transparent #efc050 transparent;
+  border: 1.7rem solid $accent-color;
+  border-color: $accent-color transparent $accent-color transparent;
   -webkit-animation: main-screen__form-spinner 1.2s infinite;
   animation: main-screen__form-spinner 1.2s infinite;
 }

@@ -2,13 +2,13 @@
 
 .plot-area {
   position: relative;
-//   min-width: 425px;
+  //   min-width: 425px;
   width: 70vw;
   margin: 5vh auto;
 }
 .plot-area__placeholder {
   position: absolute;
-  top: 30%;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   color: $accent-color;
@@ -21,13 +21,14 @@
   @include if-size(large) {
     font-size: 2.5rem;
   }
-  img{
+  img {
     height: 40vh;
     position: relative;
   }
 }
+
 .plot-area__chart-container {
-  height: 370px;
+  height: 24rem;
   margin: 0 auto;
   width: 100%;
   @include if-size(medium) {
@@ -39,7 +40,6 @@
 }
 .plot-area__chart-container-hidden {
   visibility: hidden;
-  width: 80%;
 }
 .plot-area__save-plot {
   position: relative;

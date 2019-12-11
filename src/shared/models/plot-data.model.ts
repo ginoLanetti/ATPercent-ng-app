@@ -13,6 +13,4 @@ export class PlotDataModel {
         this.dataPoints = plotData.dataPoints;
 
     }
-
-
 }

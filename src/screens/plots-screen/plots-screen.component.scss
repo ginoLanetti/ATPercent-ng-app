@@ -38,9 +38,9 @@
 }
 
 .plot-screen__button--remove p {
-  color: crimson;
+  color: $crimson;
   border-radius: 0.25rem;
-  background-color: mistyrose;
+  background-color: $mistyrose;
   line-height: 2rem;
   height: 2rem;
   width: 2rem;
@@ -49,7 +49,7 @@
   color: $strong-color;
   font-size: 1.5rem;
   border-radius: 0.25rem;
-  background-color: lightgreen;
+  background-color: $lightgreen;
   line-height: 2rem;
   height: 2rem;
   width: 2rem;

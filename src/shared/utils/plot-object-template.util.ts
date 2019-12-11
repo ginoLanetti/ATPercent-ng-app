@@ -1,6 +1,7 @@
 import * as CanvasJS from './canvasjs.min.js';
+import { PlotDataModel } from '../models/plot-data.model.js';
 
-export const returnChart = (finalDataset) => {
+export const returnChart = (finalDataset: PlotDataModel[]) => {
     const chartTemplate = new CanvasJS.Chart('chartContainer', {
         zoomEnabled: true,
         exportEnabled: true,

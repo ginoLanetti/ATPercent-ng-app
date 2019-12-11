@@ -6,7 +6,6 @@ import { AboutComponent } from 'src/screens/about/about.component';
 
 
 const routes: Routes = [
-  // {path:'about', component: },
   { path: '', component: AboutComponent },
   { path: 'new-plot', component: MainScreenComponent },
   { path: 'saved', component: PlotsScreenComponent },

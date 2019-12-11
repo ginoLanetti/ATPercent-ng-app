@@ -28,6 +28,7 @@ export class MainScreenComponent implements OnInit {
         this.buildForm();
         this.subscribeSequenceSourceChange();
     }
+
     submit(): void {
         const { seqFileContent, sequenceSource } = this.form.value;
         this.submitted = true;
@@ -35,14 +36,23 @@ export class MainScreenComponent implements OnInit {
             this.valid = true;
             const step = parseInt(this.form.value.step);
             const window = parseInt(this.form.value.window);
+<<<<<<< HEAD
 
             sequenceSource === this.sequenceSources[0].value
                 ? this.whenUploaded(window, step, seqFileContent)
                 : this.whenDownloaded(window, step);
         }
 
+=======
+
+            sequenceSource === this.sequenceSources[0].value
+                ? this.whenUploaded(window, step, seqFileContent)
+                : this.whenDownloaded(window, step);
+        }
+>>>>>>> Code refactoring and final styling
     }
-    getSequence() {
+
+    getSequence(): void {
         const { sequenceIdNum } = this.form.value;
         this.fetchingData = true;
         this.fetchingSequences.fetchSequence(sequenceIdNum).subscribe(
@@ -53,6 +63,10 @@ export class MainScreenComponent implements OnInit {
             (error) => {
                 alert('There is no such sequence in the database. Check if sequence ID is correct');
                 this.fetchingData = false;
+<<<<<<< HEAD
+=======
+                console.error(error);
+>>>>>>> Code refactoring and final styling
             }
         );
     }
@@ -62,11 +76,18 @@ export class MainScreenComponent implements OnInit {
             this.sequenceData = new SequenceDataModel(window, step, seqFileContent);
         }
     }
+
     private whenDownloaded(window: number, step: number): void {
         if (this.form.valid && this.downloadedData) {
-            this.sequenceData = new SequenceDataModel(window, step, this.downloadedData.sequence.toLowerCase(), this.downloadedData.label);
+            this.sequenceData = new SequenceDataModel(
+                window,
+                step,
+                this.downloadedData.sequence.toLowerCase(),
+                this.downloadedData.label
+            );
         }
     }
+
     private buildForm(): void {
         this.form = this.formBuilder.group({
             window: ['', [Validators.required, Validators.min(1)]],

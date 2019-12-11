@@ -1,21 +1,22 @@
 @import "../../../presets.scss";
+
 .form__alert-box {
-    display: flex; 
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    background-color: mistyrose;
-    font-size: 0.7rem;
-    color: crimson;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: $mistyrose;
+  font-size: 0.7rem;
+  color: $crimson;
 }
 
 .form__alert-box-text {
-    text-align: center;
-    width: 100%;
-    user-select: none;
+  text-align: center;
+  width: 100%;
+  user-select: none;
 }

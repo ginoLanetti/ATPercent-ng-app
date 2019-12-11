@@ -1,10 +1,11 @@
-    <div class="file-loader">
-        <label class="file-loader__button-container">
-            <div class="file-loader__button-text">{{ labelName }}</div>
-            <input 
-                type="file"
-                accept=".txt,.fasta,.fastq,.fna"
-                (change)="onFileChange($event)"
-                style="display: none;"/>
-        </label>
-    </div>
+<div class="file-loader">
+  <label class="file-loader__button-container">
+    <div class="file-loader__button-text">{{ labelName }}</div>
+    <input
+      type="file"
+      accept=".txt,.fasta,.fastq,.fa,.fna"
+      (change)="onFileChange($event)"
+      style="display: none;"
+    />
+  </label>
+</div>
