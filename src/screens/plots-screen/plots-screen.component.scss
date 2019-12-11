@@ -3,7 +3,7 @@
 .plot-screen {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   margin: 0 auto;
   height: 92.5vh;
   width: 100%;
@@ -13,26 +13,40 @@
 }
 .plot-screen__table {
   width: 100%;
+  table-layout: auto;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: 0.1rem;
   text-align: center;
-  margin: 6rem auto;
-  th {
-    height: 10vh;
-    background-color: $light-color;
-    border-color: lightgray;
+  margin: 6rem 5vw;
+  border-collapse: collapse;
+  tbody {
+    td{
+      height: 4vh;
+      border-bottom: 2px solid $light-color; 
+    }
+    tr:nth-child(odd) {
+      background-color: $whitish;
+    }
+    td:nth-child(1){ 
+      text-align: left;
+      padding: 0.5rem;
+    }
+    td:nth-child(2){ 
+
+    }
   }
-  td {
-    background-color: $whitish;
-    .plot-screen__button {
-      background: none;
-      border: none;
-      margin: 0;
-      padding: 0;
-      cursor: pointer;
+  thead {
+    background-color: $light-color;
+    th{
+      height: 6vh;
     }
   }
 }
-.plot-screen__button--remove:hover {
-  background-color: mistyrose;
+.plot-screen__button--remove p {
+  color: darkmagenta;
+  border-radius: 0.3rem;
+  border: 1px solid $light-shadow;
+  line-height: 2rem;
+  height: 2rem;
+  width: 2rem;
 }

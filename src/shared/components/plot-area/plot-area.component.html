@@ -1,7 +1,7 @@
 <div class="plot-area">  
-     <div id="chartContainer" style="height: 370px; width: 90%; margin: 0 auto;">
+     <div id="chartContainer" style="height: 370px; width: 90%; margin: 0 auto;" class="plot-area__chartContainer">
           <ng-template  #placeholder>
-               <h2>Your plot will render here</h2>    
+               <h2 class="plot-area__placeholder">Your plot will render here</h2>    
           </ng-template>
      </div>
      <div *ngIf="plotData || !!(reRenderData$ | async).length; else placeholder">

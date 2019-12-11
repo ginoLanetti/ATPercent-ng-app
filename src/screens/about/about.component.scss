@@ -3,7 +3,7 @@
 .about {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   margin: 0 auto;
   height: 92.5vh;
@@ -22,7 +22,7 @@
 }
 .about__paragraph {
   width: 75%;
-  height: 55%;
+  height: 45%;
   font-size: 1rem;
   line-height: 150%;
   @include if-size(medium) {

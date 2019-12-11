@@ -1,4 +1,17 @@
+@import "../../../variables-and-mixins.scss";
+
 .plot-area{
+    position: relative;
     width: 70vw;
     margin: 5vh auto;
+}
+.plot-area__placeholder{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: $accent-color;
+    width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
 }

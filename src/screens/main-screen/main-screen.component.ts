@@ -54,7 +54,7 @@ export class MainScreenComponent implements OnInit {
     }
     private whenDownloaded(window: number, step: number): void {
         if (this.form.valid && this.downloadedData) {
-            this.sequenceData = new SequenceDataModel(window, step, this.downloadedData.sequence.toLowerCase(), this.downloadedData.label)
+            this.sequenceData = new SequenceDataModel(window, step, this.downloadedData.sequence.toLowerCase(), this.downloadedData.label);
         }
     }
     private buildForm(): void {

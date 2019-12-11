@@ -3,15 +3,28 @@
     flex-direction: column;
     justify-content: center;
     position: absolute;
-    left: -5rem;
-    top: -2rem;
+    top: 5rem;
+    left: -14.5rem;
     width: 12rem;
     padding: 0.5rem;
-    border:  1px solid darkmagenta;
     border-radius: 0.5rem;
     background-color: mistyrose;
     color: darkmagenta;
 }
+.form__alert-box:after {
+    content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 1rem solid transparent;
+	border-bottom-color: mistyrose;
+	border-top: 0;
+	margin-left: -1rem;
+	margin-top: -1rem;
+}
+
 .form__alert-box-text {
     text-align: center;
 }

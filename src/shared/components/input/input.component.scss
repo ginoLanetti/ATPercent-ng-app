@@ -16,3 +16,7 @@
     border: 0.125rem solid $light-color;
     box-shadow: 1px 1px 1px $light-color;
 }
+.form__input-field:focus{
+    border: 0.125rem solid $medium-color;
+    outline: none
+}
