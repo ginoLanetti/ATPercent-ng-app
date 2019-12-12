@@ -1,4 +1,4 @@
-@import "../../../variables-and-mixins.scss";
+@import "../../../presets.scss";
 
 .header {
   display: flex;
@@ -18,8 +18,14 @@
   text-decoration: none;
   text-align: center;
   line-height: 7vh;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: $whitish;
+  @include if-size(medium) {
+    font-size: 1.2rem;
+  }
+  @include if-size(large) {
+    font-size: 1.5rem;
+  }
 }
 .header__element:hover {
   background-color: $medium-color;

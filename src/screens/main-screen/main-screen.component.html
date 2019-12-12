@@ -1,26 +1,38 @@
 <section class="main-screen">
   <form [formGroup]="form" (ngSubmit)="submit()" class="main-screen__form">
-    <select formControlName="sequenceSource" class="main-screen__form-element main-screen__form-select-element">
+    <select
+      formControlName="sequenceSource"
+      class="main-screen__form-element main-screen__form-select-element"
+    >
       <option *ngFor="let source of sequenceSources" [value]="source.value">
         {{ source.label }}
       </option>
     </select>
-    <ng-container *ngIf="form.value.sequenceSource === sequenceSources[0].value" >
-      <app-file-loader
-        [labelName]="'Upload file'"
-        [formController]="form.controls.seqFileContent"
-        class="main-screen__form-element"
-      >
-      </app-file-loader>
-      <div class="main-screen__form-element  main-screen__form-onload-message">
-      <img src="../../assets/svg/check.svg" alt="loading..." width="55" *ngIf="form.value.seqFileContent" class="main-screen__form-tick-sign">
+    <ng-container
+      *ngIf="form.value.sequenceSource === sequenceSources[0].value"
+    >
+      <div class="main-screen__form-element">
+        <app-file-loader
+          [labelName]="'Upload file'"
+          [formController]="form.controls.seqFileContent"
+        >
+        </app-file-loader>
+        <app-alert-box
+          [inputErrors]="form.controls.seqFileContent.errors"
+          [ifSubmitted]="submitted"
+        >
+        </app-alert-box>
       </div>
-      <app-alert-box
-        [inputErrors]="form.controls.seqFileContent.errors"
-        [ifSubmitted]="submitted"
-        class="main-screen__form-element"
-      >
-      </app-alert-box>
+      <div class="main-screen__form-element  main-screen__form-onload-message">
+        <p *ngIf="!form.value.seqFileContent">sequence <br> not <br> loaded</p>
+        <img
+          src="../../assets/svg/check.svg"
+          alt="loading..."
+          width="55"
+          *ngIf="form.value.seqFileContent"
+          class="main-screen__form-tick-sign"
+        />
+      </div>
     </ng-container>
     <ng-container
       *ngIf="form.value.sequenceSource === sequenceSources[1].value"
@@ -33,42 +45,60 @@
         class="main-screen__form-element"
       >
       </app-input>
-      <button type="button" (click)="getSequence()" class="main-screen__form-element main-screen__form-button-container"> <div class="main-screen__form-button-text">Download</div> </button>
+      <button
+        type="button"
+        (click)="getSequence()"
+        class="main-screen__form-element main-screen__form-button-container"
+      >
+        <div class="main-screen__form-button-text">Download</div>
+      </button>
       <div class="main-screen__form-element main-screen__form-onload-message">
-          <p *ngIf="!downloadedData && !fetchingData">sequence not loaded</p>
-          <img src="../../assets/svg/check.svg" alt="sequence downloaded" width="55" *ngIf="downloadedData && !fetchingData" class="main-screen__form-tick-sign">
-          <div *ngIf="fetchingData" class="main-screen__form-spinner"></div>
+        <p *ngIf="!downloadedData && !fetchingData">sequence not loaded</p>
+        <img
+          src="../../assets/svg/check.svg"
+          alt="sequence downloaded"
+          width="55"
+          *ngIf="downloadedData && !fetchingData"
+          class="main-screen__form-tick-sign"
+        />
+        <div *ngIf="fetchingData" class="main-screen__form-spinner"></div>
       </div>
     </ng-container>
-    <app-input
-      [labelName]="'Window width (bp)'"
-      [inputType]="'number'"
-      [formController]="form.controls.window"
-      [ifSubmitted]="submitted"
-      class="main-screen__form-element"
+    <div class="main-screen__form-element">
+      <app-input
+        [labelName]="'Window width (bp)'"
+        [inputType]="'number'"
+        [formController]="form.controls.window"
+        [ifSubmitted]="submitted"
+      >
+      </app-input>
+      <app-alert-box
+        [inputErrors]="form.controls.window.errors"
+        [ifSubmitted]="submitted"
+      >
+      </app-alert-box>
+    </div>
+
+    <div class="main-screen__form-element">
+      <app-input
+        [labelName]="'Step size (bp)'"
+        [inputType]="'number'"
+        [formController]="form.controls.step"
+        [ifSubmitted]="submitted"
+      >
+      </app-input>
+      <app-alert-box
+        [inputErrors]="form.controls.step.errors"
+        [ifSubmitted]="submitted"
+      >
+      </app-alert-box>
+    </div>
+    <button
+      type="submit"
+      class="main-screen__form-element main-screen__form-button-container"
     >
-    </app-input>
-    <app-alert-box
-      [inputErrors]="form.controls.window.errors"
-      [ifSubmitted]="submitted"
-      class="main-screen__form-element"
-    >
-    </app-alert-box>
-    <app-input
-      [labelName]="'Step size (bp)'"
-      [inputType]="'number'"
-      [formController]="form.controls.step"
-      [ifSubmitted]="submitted"
-      class="main-screen__form-element"
-    >
-    </app-input>
-    <app-alert-box
-      [inputErrors]="form.controls.step.errors"
-      [ifSubmitted]="submitted"
-      class="main-screen__form-element"
-    >
-    </app-alert-box>
-    <button type="submit" class="main-screen__form-element main-screen__form-button-container"><div class="main-screen__form-button-text">Generate Chart</div></button>
+      <div class="main-screen__form-button-text">Generate Chart</div>
+    </button>
   </form>
   <app-plot-area [sequenceData]="sequenceData"></app-plot-area>
 </section>

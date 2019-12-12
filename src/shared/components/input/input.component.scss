@@ -1,22 +1,30 @@
-@import "../../../variables-and-mixins.scss";
+@import "../../../presets.scss";
 
-.form__input {
+.form__save-input {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
-.form__input--error {
-    border: 2px solid red;
-}
-.form__input-label {
+
+.form__save-input-label {
     text-align: center;
+    user-select: none;
+    font-size: 0.8rem;;
 }
-.form__input-field {
+.form__save-input-field {
     height: 25%;
     border: 0.125rem solid $light-color;
     box-shadow: 1px 1px 1px $light-color;
+    width: 8rem;
 }
-.form__input-field:focus{
+.form__save-input-field--error {
+    border: 0.125rem solid crimson;
+}
+.form__save-input-field:focus{
     border: 0.125rem solid $medium-color;
     outline: none
+}
+.form__save-input-button{
+    background-color: chartreuse;
 }

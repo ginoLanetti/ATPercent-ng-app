@@ -1,13 +1,15 @@
-@import "../../../variables-and-mixins.scss";
+@import "../../../presets.scss";
 
 .file-loader {
     display: flex;
     height: 100%;
+    justify-content: center;
 }
 .file-loader__button-container{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 3.4375rem;
     padding: 0 1rem;
     border-radius: 0.5rem;
     background-color: $light-color;

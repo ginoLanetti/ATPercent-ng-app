@@ -1,4 +1,4 @@
-@import "../../variables-and-mixins.scss";
+@import "../../presets.scss";
 
 .main-screen {
   display: flex;
@@ -13,17 +13,20 @@
 }
 .main-screen__form {
   height: 20%;
+  min-width: 425px;
   margin-top: 15vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  font-size: 1.1rem; ;
+  font-size: 1rem;
 }
 .main-screen__form-element {
   display: flex;
-  height: 5rem;
+  flex-direction: column;
   border-radius: 0.5rem;
+  flex-basis: 9rem;
+  margin-top: 0.5rem;
 }
 .main-screen__form-select-element {
   text-align: center;
@@ -35,12 +38,14 @@
   box-shadow: 1px 1px 1px $light-color;
 }
 .main-screen__form-select-element:focus {
+  border: 0.125rem solid $medium-color;
   outline: none;
 }
 .main-screen__form-button-container{
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 3.4375rem;
   padding: 0 1rem;
   background-color: $light-color;
   border: 0.125rem solid $light-color;
@@ -67,11 +72,15 @@
   flex-direction: column;
   justify-content: center;
   flex-basis: 3.4375rem;
+  height: 3.4375rem;
+  border: 0.05rem dashed $light-shadow;
+  background-color: $whitish;
   p{
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     text-align: center;
     font-style: italic;
-    color: darkmagenta;
+    font-weight: bold;
+    color: $strong-color;
   }
 }
 .main-screen__form-spinner {
@@ -85,12 +94,13 @@
   content: " ";
   display: block;
   border-radius: 50%;
-  width: 0;
-  height: 0;
-  margin: 0 auto;
+  width: 2.5rem;
+  height: 100%;
+  margin: auto;
   box-sizing: border-box;
-  border: 1.2rem solid $accent-color;
-  border-color: $accent-color transparent $accent-color transparent;
+  border: 1.7rem solid #efc050;
+  border-color: #efc050 transparent #efc050 transparent;
+  -webkit-animation: main-screen__form-spinner 1.2s infinite;
   animation: main-screen__form-spinner 1.2s infinite;
 }
 @keyframes main-screen__form-spinner {
