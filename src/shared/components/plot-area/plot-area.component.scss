@@ -21,6 +21,11 @@
   @include if-size(large) {
     font-size: 2.5rem;
   }
+  img{
+    height: 40vh;
+    position: relative;
+    bottom: 13vh;
+  }
 }
 .plot-area__chart-container {
   height: 370px;

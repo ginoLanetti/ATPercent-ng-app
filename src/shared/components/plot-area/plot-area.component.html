@@ -3,7 +3,7 @@
           
      </div>
      <ng-template  #placeholder>
-               <div class="plot-area__placeholder">Your plot will render here</div>    
+               <div class="plot-area__placeholder"><img src="./../../../assets/svg/DNA.svg" alt="diagram"></div>    
           </ng-template>
      <div *ngIf="plotData || !!(reRenderData$ | async).length; else placeholder" class="plot-area__save-plot">
           <app-input [labelName]="'Plot name'"[ifSubmitted]="submitted" [formController]="chartNameControl" class="plot-area__save-plot-input"></app-input>
