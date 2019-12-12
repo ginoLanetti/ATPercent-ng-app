@@ -5,11 +5,11 @@ $medium-screen-break: 768px;
 $strong-color: #035e83;
 $medium-color: #447c92;
 $light-color: #bad8e1;
+$light-background: #E4F6F8;
 $light-shadow: #7baebd;
 $accent-color: #efc050;
 $whitish: #f8f9f9;
 $blackish: #1e1e1e;
-
 $textblock-font: "Montserrat", sans-serif;
 
 /*Media queries*/
@@ -24,6 +24,10 @@ $textblock-font: "Montserrat", sans-serif;
     }
   } @else if $media == large {
     @media only screen and (min-width: $medium-screen-break) {
+      @content;
+    }
+  } @else if $media == mediumUp {
+    @media only screen and (min-width: $medium-screen-break)  {
       @content;
     }
   }

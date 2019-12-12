@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SequenceDataModel } from 'src/shared/models/sequence-data.model';
 import { FetchingSequencesService } from 'src/shared/services/fetching-sequences.service';
+import { SequenceSources } from 'src/shared/interfaces/sequence-sources.interface';
+import { DownloadedData } from 'src/shared/interfaces/downloaded-data.interface';
 
 @Component({
     selector: 'app-main-screen',
@@ -13,12 +15,12 @@ export class MainScreenComponent implements OnInit {
     submitted: boolean;
     sequenceData: SequenceDataModel;
     valid: boolean;
-    sequenceSources: Array<any> = [
+    sequenceSources: Array<SequenceSources> = [
         {label: 'Upload sequence file', value: 'uploaded'},
         {label: 'Download form ensembl database', value: 'downloaded'}
     ];
     fetchingData: boolean;
-    downloadedData: any;
+    downloadedData: DownloadedData;
 
     constructor(private formBuilder: FormBuilder, private fetchingSequences: FetchingSequencesService) {}
 

@@ -3,7 +3,7 @@
 .plot-screen {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: 0 auto;
   height: 92.5vh;
   width: 100%;
@@ -16,7 +16,7 @@
   width: 100%;
   table-layout: auto;
   overflow: hidden;
-  border-radius: 0.1rem;
+  border-radius: 0.25rem;
   text-align: center;
   margin: 6rem 5vw;
   border-collapse: collapse;
@@ -25,16 +25,10 @@
       height: 4vh;
       border-bottom: 2px solid $light-color; 
     }
-    tr:nth-child(odd) {
-      background-color: $whitish;
+    tr:nth-child(even) {
+      background-color: $light-background;
     }
-    td:nth-child(1){ 
-      text-align: left;
-      padding: 0.5rem;
-    }
-    td:nth-child(2){ 
 
-    }
   }
   thead {
     background-color: $light-color;
@@ -46,8 +40,17 @@
 
 .plot-screen__button--remove p {
   color: crimson;
-  border-radius: 0.3rem;
-  border: 1px solid $light-shadow;
+  border-radius: 0.25rem;
+  background-color: mistyrose;
+  line-height: 2rem;
+  height: 2rem;
+  width: 2rem;
+}
+.plot-screen__button--rerender p {
+  color: $strong-color;
+  font-size: 1.5rem;
+  border-radius: 0.25rem;
+  background-color: lightgreen;
   line-height: 2rem;
   height: 2rem;
   width: 2rem;

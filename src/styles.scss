@@ -6,7 +6,9 @@
 html{ box-sizing: border-box;}
 
 body {
-   font-family: $textblock-font; 
+   font-family: $textblock-font;
+   color: $blackish;
+   font-size: 1rem;
 
 }
 button, input[type="submit"], input[type="button"] {
