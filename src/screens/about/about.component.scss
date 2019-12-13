@@ -3,9 +3,9 @@
 .about {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-start;
   @include if-size(medium) {
-    justify-content: end;
+    justify-content: flex-start;
   }
   @include if-size(large) {
     justify-content: center;
