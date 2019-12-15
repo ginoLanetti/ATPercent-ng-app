@@ -21,24 +21,30 @@ export const returnSequencesAndLabels = (fileContent: string): SequencesAndLabel
   };
   return sequencesAndLabels;
 };
+
 export const returnATPercent = (sequence: string, startPosition: number, windowWidth: number): number => {
   // calculating average AT % for given windowWidth starting from startPosition
   let countAT = 0;
   for (let i = startPosition; i < (startPosition + windowWidth); i++) {
     const letterAOrT = (sequence[i] === 'a') || (sequence[i] === 't');
-    if (letterAOrT) { countAT++; }
+    if (letterAOrT) {
+      countAT++;
+    }
   }
-  return (countAT /  windowWidth) * 100;
+  return (countAT / windowWidth) * 100;
 };
+
 export const returnXs = (sequence: string, windowWidth: number, step: number): Array<number> => {
   // creating array of positions for given sequence (X axis values)
   const positions = [];
   const lastWindowPosition = sequence.length - windowWidth;
-  for (let position = 0; position < lastWindowPosition; position += step ) {
+  for (let position = 0; position < lastWindowPosition; position += step) {
     positions.push(position);
   }
   const notFullyCovered = positions[positions.length - 1] + windowWidth < sequence.length;
-  if (notFullyCovered) { positions.push(lastWindowPosition); }
+  if (notFullyCovered) {
+    positions.push(lastWindowPosition);
+  }
   return positions;
 };
 
@@ -50,7 +56,12 @@ export const returnYs = (positions: Array<number>, sequence: string, windowWidth
   return atPercentArray;
 };
 
-export const returnPlotDataset = (labels: Array<string>, sequences: Array<string>, windowWidth: number, step: number): PlotDataModel[] => {
+export const returnPlotDataset = (
+  labels: Array<string>,
+  sequences: Array<string>,
+  windowWidth: number,
+  step: number
+  ): PlotDataModel[] => {
   // creating dataset for plot rendering
   const multipleXYDatasets = [];
   for (const [seqIndex, sequence] of sequences.entries()) {
@@ -66,7 +77,7 @@ export const returnPlotDataset = (labels: Array<string>, sequences: Array<string
       showInLegend: true,
       markerSize: 0
     }));
-}
+  }
   return multipleXYDatasets;
 };
 

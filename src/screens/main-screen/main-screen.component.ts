@@ -28,6 +28,7 @@ export class MainScreenComponent implements OnInit {
         this.buildForm();
         this.subscribeSequenceSourceChange();
     }
+
     submit(): void {
         const { seqFileContent, sequenceSource } = this.form.value;
         this.submitted = true;
@@ -40,9 +41,9 @@ export class MainScreenComponent implements OnInit {
                 ? this.whenUploaded(window, step, seqFileContent)
                 : this.whenDownloaded(window, step);
         }
-
     }
-    getSequence() {
+
+    getSequence(): void {
         const { sequenceIdNum } = this.form.value;
         this.fetchingData = true;
         this.fetchingSequences.fetchSequence(sequenceIdNum).subscribe(
@@ -53,6 +54,7 @@ export class MainScreenComponent implements OnInit {
             (error) => {
                 alert('There is no such sequence in the database. Check if sequence ID is correct');
                 this.fetchingData = false;
+                console.error(error);
             }
         );
     }
@@ -62,11 +64,18 @@ export class MainScreenComponent implements OnInit {
             this.sequenceData = new SequenceDataModel(window, step, seqFileContent);
         }
     }
+
     private whenDownloaded(window: number, step: number): void {
         if (this.form.valid && this.downloadedData) {
-            this.sequenceData = new SequenceDataModel(window, step, this.downloadedData.sequence.toLowerCase(), this.downloadedData.label);
+            this.sequenceData = new SequenceDataModel(
+                window,
+                step,
+                this.downloadedData.sequence.toLowerCase(),
+                this.downloadedData.label
+            );
         }
     }
+
     private buildForm(): void {
         this.form = this.formBuilder.group({
             window: ['', [Validators.required, Validators.min(1)]],

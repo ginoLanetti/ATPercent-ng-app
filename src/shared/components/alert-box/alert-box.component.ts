@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ValidationErrors } from '@angular/forms';
 
 @Component({
     selector: 'app-alert-box',
@@ -6,7 +7,7 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./alert-box.component.scss']
 })
 export class AlertBoxComponent {
-    @Input() inputErrors: any;
+    @Input() inputErrors: ValidationErrors;
     @Input() ifSubmitted: boolean;
 
     getErrorMsg(): string {
