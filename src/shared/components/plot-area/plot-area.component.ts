@@ -84,11 +84,7 @@ export class PlotAreaComponent implements OnInit, OnDestroy, OnChanges {
         const { step, seqFileContent } = sequenceData;
         const windowWidth = sequenceData.window;
         const sequencesAndLabels = sequenceData.label
-<<<<<<< HEAD
-            ? {sequences: [sequenceData.seqFileContent], labels: [sequenceData.label]}
-=======
             ? { sequences: [sequenceData.seqFileContent], labels: [sequenceData.label] }
->>>>>>> Code refactoring and final styling
             : PlotLogic.returnSequencesAndLabels(seqFileContent);
         const { sequences, labels } = sequencesAndLabels;
         const mulitpleXYDatasets = PlotLogic.returnPlotDataset(labels, sequences, windowWidth, step);

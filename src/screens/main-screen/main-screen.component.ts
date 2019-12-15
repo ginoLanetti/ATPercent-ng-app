@@ -36,20 +36,11 @@ export class MainScreenComponent implements OnInit {
             this.valid = true;
             const step = parseInt(this.form.value.step);
             const window = parseInt(this.form.value.window);
-<<<<<<< HEAD
 
             sequenceSource === this.sequenceSources[0].value
                 ? this.whenUploaded(window, step, seqFileContent)
                 : this.whenDownloaded(window, step);
         }
-
-=======
-
-            sequenceSource === this.sequenceSources[0].value
-                ? this.whenUploaded(window, step, seqFileContent)
-                : this.whenDownloaded(window, step);
-        }
->>>>>>> Code refactoring and final styling
     }
 
     getSequence(): void {
@@ -63,10 +54,7 @@ export class MainScreenComponent implements OnInit {
             (error) => {
                 alert('There is no such sequence in the database. Check if sequence ID is correct');
                 this.fetchingData = false;
-<<<<<<< HEAD
-=======
                 console.error(error);
->>>>>>> Code refactoring and final styling
             }
         );
     }
