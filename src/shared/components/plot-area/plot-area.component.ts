@@ -19,6 +19,7 @@ import { PlotsState } from 'src/shared/state/plot.state';
 })
 export class PlotAreaComponent implements OnInit, OnDestroy {
     @Input() sequenceData: SequenceDataModel;
+    @Input() plotDataValid: boolean;
     @Select(PlotsState.reRender) reRenderData$: Observable<Array<PlotDataModel>>;
     @Select(PlotsState.plots) plotsData$: Observable<ChartDataModel[]>;
     plotData: PlotDataModel[];

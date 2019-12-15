@@ -16,13 +16,13 @@ export class MainScreenComponent implements OnInit {
     sequenceData: SequenceDataModel;
     valid: boolean;
     sequenceSources: Array<SequenceSources> = [
-        {label: 'Upload sequence file', value: 'uploaded'},
-        {label: 'Download form ensembl database', value: 'downloaded'}
+        { label: 'Upload sequence file', value: 'uploaded' },
+        { label: 'Download form ensembl database', value: 'downloaded' }
     ];
     fetchingData: boolean;
     downloadedData: DownloadedData;
 
-    constructor(private formBuilder: FormBuilder, private fetchingSequences: FetchingSequencesService) {}
+    constructor(private formBuilder: FormBuilder, private fetchingSequences: FetchingSequencesService) { }
 
     ngOnInit() {
         this.buildForm();
@@ -31,13 +31,16 @@ export class MainScreenComponent implements OnInit {
     submit(): void {
         const { seqFileContent, sequenceSource } = this.form.value;
         this.submitted = true;
-        this.valid = true;
-        const step = parseInt(this.form.value.step);
-        const window = parseInt(this.form.value.window);
+        if (this.form.valid) {
+            this.valid = true;
+            const step = parseInt(this.form.value.step);
+            const window = parseInt(this.form.value.window);
 
-        sequenceSource === this.sequenceSources[0].value
-            ? this.whenUploaded(window, step, seqFileContent)
-            : this.whenDownloaded(window, step);
+            sequenceSource === this.sequenceSources[0].value
+                ? this.whenUploaded(window, step, seqFileContent)
+                : this.whenDownloaded(window, step);
+        }
+
     }
     getSequence() {
         const { sequenceIdNum } = this.form.value;
@@ -78,13 +81,13 @@ export class MainScreenComponent implements OnInit {
         const seqContentControl = this.form.controls.seqFileContent;
         this.form.controls.sequenceSource.valueChanges.subscribe(
             sequenceSource => {
-            if (sequenceSource === this.sequenceSources[1].value) {
-                seqContentControl.setValidators(null);
-            } else {
-                this.submitted = false;
-                seqContentControl.setValidators(Validators.required);
-            }
-            seqContentControl.updateValueAndValidity();
-        });
+                if (sequenceSource === this.sequenceSources[1].value) {
+                    seqContentControl.setValidators(null);
+                } else {
+                    this.submitted = false;
+                    seqContentControl.setValidators(Validators.required);
+                }
+                seqContentControl.updateValueAndValidity();
+            });
     }
 }

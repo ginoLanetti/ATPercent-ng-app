@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class FetchingSequencesService {
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) { }
     fetchSequence(idNumber: string): Observable<any> {
         const apiUrl = `https://rest.ensembl.org/sequence/id/${idNumber}`;
         return this.httpClient.get(apiUrl);

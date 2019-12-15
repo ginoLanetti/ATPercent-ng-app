@@ -21,18 +21,17 @@
   margin: 6rem 5vw;
   border-collapse: collapse;
   tbody {
-    td{
+    td {
       height: 4vh;
-      border-bottom: 2px solid $light-color; 
+      border-bottom: 2px solid $light-color;
     }
     tr:nth-child(even) {
       background-color: $light-background;
     }
-
   }
   thead {
     background-color: $light-color;
-    th{
+    th {
       height: 6vh;
     }
   }
@@ -55,7 +54,7 @@
   height: 2rem;
   width: 2rem;
 }
-.plot-screen__placeholder{
+.plot-screen__placeholder {
   color: $accent-color;
   font-size: 2.5rem;
   text-align: center;

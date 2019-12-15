@@ -24,7 +24,11 @@
         </app-alert-box>
       </div>
       <div class="main-screen__form-element  main-screen__form-onload-message">
-        <p *ngIf="!form.value.seqFileContent">sequence <br> not <br> loaded</p>
+        <p *ngIf="!form.value.seqFileContent">
+          sequence <br />
+          not <br />
+          loaded
+        </p>
         <img
           src="../../assets/svg/check.svg"
           alt="loading..."
@@ -100,5 +104,8 @@
       <div class="main-screen__form-button-text">Generate Chart</div>
     </button>
   </form>
-  <app-plot-area [sequenceData]="sequenceData"></app-plot-area>
+  <app-plot-area 
+    [sequenceData]="sequenceData"
+    [plotDataValid]="valid"
+  ></app-plot-area>
 </section>

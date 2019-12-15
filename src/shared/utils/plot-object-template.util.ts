@@ -3,8 +3,8 @@ import * as CanvasJS from './canvasjs.min.js';
 export const returnChart = (finalDataset) => {
     const chartTemplate = new CanvasJS.Chart('chartContainer', {
         zoomEnabled: true,
+        exportEnabled: true,
         animationEnabled: true,
-        // exportEnabled: true,
         colorSet: 'colorSet2',
         toolTip: {
             shared: true

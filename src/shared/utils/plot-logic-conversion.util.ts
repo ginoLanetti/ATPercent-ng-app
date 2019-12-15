@@ -34,7 +34,7 @@ export const returnXs = (sequence: string, windowWidth: number, step: number): A
   // creating array of positions for given sequence (X axis values)
   const positions = [];
   const lastWindowPosition = sequence.length - windowWidth;
-  for (let position:number = 0; position < lastWindowPosition; position += step /* <---???? */ ) {
+  for (let position = 0; position < lastWindowPosition; position += step ) {
     positions.push(position);
   }
   const notFullyCovered = positions[positions.length - 1] + windowWidth < sequence.length;
@@ -59,8 +59,14 @@ export const returnPlotDataset = (labels: Array<string>, sequences: Array<string
     const singleXYDataset: Array<object> = xValues.map((value, valueIndex) => (
       { x: value, y: yValues[valueIndex] }
     ));
-    multipleXYDatasets.push(new PlotDataModel({name: labels[seqIndex], dataPoints: singleXYDataset, type:'spline', showInLegend: true, markerSize: 0}));
-  }
+    multipleXYDatasets.push(new PlotDataModel({
+      name: labels[seqIndex],
+      dataPoints: singleXYDataset,
+      type: 'spline',
+      showInLegend: true,
+      markerSize: 0
+    }));
+}
   return multipleXYDatasets;
 };
 

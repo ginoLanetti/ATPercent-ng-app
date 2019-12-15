@@ -16,7 +16,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 5rem;
-  @include if-size(mediumUp){
+  @include if-size(mediumUp) {
     height: 20%;
     flex-direction: row;
     justify-content: space-evenly;
@@ -29,7 +29,7 @@
   flex-direction: column;
   border-radius: 0.25rem;
   margin-top: 1.1rem;
-  @include if-size(mediumUp){
+  @include if-size(mediumUp) {
     flex-basis: 9rem;
   }
 }
@@ -46,7 +46,7 @@
   border: 0.125rem solid $medium-color;
   outline: none;
 }
-.main-screen__form-button-container{
+.main-screen__form-button-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,10 +69,10 @@
   border: 0.125rem solid $strong-color;
   box-shadow: inset -0.125rem -0.125rem 0.125rem $medium-color;
 }
-.main-screen__form-button-text{
-  text-align: center; 
+.main-screen__form-button-text {
+  text-align: center;
 }
-.main-screen__form-onload-message{
+.main-screen__form-onload-message {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,7 +80,7 @@
   height: 3.4375rem;
   border: 0.05rem dashed $light-shadow;
   background-color: $whitish;
-  p{
+  p {
     font-size: 0.6rem;
     text-align: center;
     font-style: italic;

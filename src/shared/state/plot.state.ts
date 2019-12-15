@@ -15,17 +15,17 @@ interface PlotsStateModel {
         dataToRerender: []
     }
 })
-export class PlotsState{
+export class PlotsState {
     @Selector()
     static plots(state: PlotsStateModel): ChartDataModel[] {
         return state.plotsData
     }
     @Selector()
-    static reRender(state: PlotsStateModel) :Array<PlotDataModel> {
+    static reRender(state: PlotsStateModel): Array<PlotDataModel> {
         return state.dataToRerender
     }
     @Action(SavePlot)
-    savePlot(context: StateContext<PlotsStateModel>, action: SavePlot){
+    savePlot(context: StateContext<PlotsStateModel>, action: SavePlot) {
         const currentPlotsData = context.getState().plotsData
         const newPlotsData = currentPlotsData ? [...currentPlotsData, action.chartData] : [action.chartData]
         setInLocalStorage('plotsData', newPlotsData)
@@ -34,14 +34,14 @@ export class PlotsState{
         })
     }
     @Action(GetPlotsData)
-    getPlotData(context: StateContext<PlotsStateModel>){
+    getPlotData(context: StateContext<PlotsStateModel>) {
         const localStorageData = getFromLocalStorage('plotsData');
         context.patchState({
             plotsData: localStorageData
         })
     }
     @Action(RemovePlot)
-    removePlot(context: StateContext<PlotsStateModel>, action: RemovePlot){
+    removePlot(context: StateContext<PlotsStateModel>, action: RemovePlot) {
         const trimmedPlotsData = context.getState().plotsData.filter(plot => plot.name != action.chartNameToRemove)
         setInLocalStorage('plotsData', trimmedPlotsData)
         context.patchState({
@@ -49,7 +49,7 @@ export class PlotsState{
         })
     }
     @Action(AddDataToRerender)
-    reRenderPlot(context:  StateContext<PlotsStateModel>, action: AddDataToRerender){
+    reRenderPlot(context: StateContext<PlotsStateModel>, action: AddDataToRerender) {
         context.patchState({
             dataToRerender: action.dataToRerender
         })

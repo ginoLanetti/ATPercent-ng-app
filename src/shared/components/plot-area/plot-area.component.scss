@@ -24,7 +24,6 @@
   img{
     height: 40vh;
     position: relative;
-    bottom: 13vh;
   }
 }
 .plot-area__chart-container {
@@ -38,12 +37,17 @@
     width: 80%;
   }
 }
+.plot-area__chart-container-hidden {
+  visibility: hidden;
+  width: 80%;
+}
 .plot-area__save-plot {
   position: relative;
   flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-top: 2rem;
 }
 .plot-area__save-plot-button {
   padding: 0.2rem 3rem;

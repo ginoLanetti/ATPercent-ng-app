@@ -18,7 +18,7 @@
             (click)="reRender(data.plotsData)"
             class="plot-screen__button plot-screen__button--rerender"
           >
-           <p>♺</p> 
+            <p>♺</p>
           </button>
         </td>
         <td>
@@ -27,11 +27,13 @@
             (click)="removePlot(data.name)"
             class="plot-screen__button plot-screen__button--remove"
           >
-            <p>X</p> 
+            <p>X</p>
           </button>
         </td>
       </tr>
     </tbody>
   </table>
-  <div *ngIf="!plotsData.length" class="plot-screen__placeholder">No plots saved. Let's create a new one!</div>
+  <div *ngIf="!plotsData.length" class="plot-screen__placeholder">
+    No plots saved. Let's create a new one!
+  </div>
 </section>
