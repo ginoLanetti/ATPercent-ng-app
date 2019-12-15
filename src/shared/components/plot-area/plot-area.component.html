@@ -1,14 +1,35 @@
-<div class="plot-area">  
-     <div id="chartContainer" style="height: 370px; width: 90%; margin: 0 auto;">
-          <ng-template  #placeholder>
-               <h2>Your plot will render here</h2>    
-          </ng-template>
-     </div>
-     <div *ngIf="plotData || !!(reRenderData$ | async).length; else placeholder">
-          <app-input [ifSubmitted]="submitted" [formController]="chartNameControl"></app-input>
-          <app-alert-box [inputErrors]="chartNameControl.errors" [ifSubmitted]="submitted"></app-alert-box>
-          <button type="button" (click)="savePlot()">Save plot</button>
-     </div>
-</div> 
-
-   
+<div class="plot-area">
+  <div
+    id="chartContainer"
+    class="plot-area__chart-container"
+    [className]="plotDataValid ? 'plot-area__chart-container' : 'plot-area__chart-container-hidden'"
+  ></div>
+  <ng-template #placeholder>
+    <div class="plot-area__placeholder">
+      <img src="./../../../assets/svg/DNA.svg" alt="diagram" />
+    </div>
+  </ng-template>
+  <div
+    *ngIf="plotData || !!(reRenderData$ | async).length; else placeholder"
+    class="plot-area__save-plot"
+  >
+    <app-input
+      [labelName]="'Plot name'"
+      [ifSubmitted]="submitted"
+      [formController]="chartNameControl"
+      class="plot-area__save-plot-input"
+    ></app-input>
+    <button
+      type="button"
+      (click)="savePlot()"
+      class="plot-area__save-plot-button"
+    >
+      Save
+    </button>
+    <app-alert-box
+      [inputErrors]="chartNameControl.errors"
+      [ifSubmitted]="submitted"
+      class="plot-area__save-plot-alert"
+    ></app-alert-box>
+  </div>
+</div>

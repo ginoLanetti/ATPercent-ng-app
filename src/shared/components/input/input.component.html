@@ -1,7 +1,8 @@
-<label>{{ labelName }}
-        <input 
-            type="{{ inputType }}"
-            [formControl] = "formController"
-            [ngClass] = "(ifSubmitted && formController.errors) ? 'form__input--error' : null"/>
-    </label>
 
+<div class="form__save-input">
+        <label class="form__save-input-label">{{ labelName }}</label>
+        <input class="form__save-input-field"
+                type="{{ inputType }}"
+                [formControl] = "formController"
+                [ngClass] = "(ifSubmitted && formController.errors) ? 'form__save-input-field--error' : null"/>
+</div>

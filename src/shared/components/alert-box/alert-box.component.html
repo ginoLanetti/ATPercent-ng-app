@@ -1,5 +1,5 @@
- <span 
+ <div
     class="form__alert-box"
-    *ngIf="ifSubmitted && (formErrors || inputErrors)"> 
-    {{ getErrorMsg() }}
-</span>
+    *ngIf="ifSubmitted && inputErrors"> 
+    <div class="form__alert-box-text">{{ getErrorMsg() }}</div>
+</div>

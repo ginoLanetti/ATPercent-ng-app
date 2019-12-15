@@ -1,24 +1,39 @@
-<div class = "plot-screen" *ngIf="plotsData.length">
-    <table class="plot-screen__table">
-        <thead>
-            <tr>
-                <th *ngFor="let header of tableHeaders">
-                    {{ header }}
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let data of plotsData">
-                <td>
-                    {{ data.name }}
-                </td>
-                <td>
-                    <button type="button" (click)="reRender(data.plotsData)">Re-render</button>
-                </td>
-                <td>
-                    <button type="button" (click)="removePlot(data.name)">Remove</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<section class="plot-screen">
+  <table class="plot-screen__table" *ngIf="plotsData.length">
+    <thead>
+      <tr>
+        <th *ngFor="let header of tableHeaders">
+          {{ header }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of plotsData">
+        <td>
+          {{ data.name }}
+        </td>
+        <td>
+          <button
+            type="button"
+            (click)="reRender(data.plotsData)"
+            class="plot-screen__button plot-screen__button--rerender"
+          >
+            <p>♺</p>
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            (click)="removePlot(data.name)"
+            class="plot-screen__button plot-screen__button--remove"
+          >
+            <p>X</p>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="!plotsData.length" class="plot-screen__placeholder">
+    No plots saved. Let's create a new one!
+  </div>
+</section>

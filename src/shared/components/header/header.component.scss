@@ -1,17 +1,37 @@
-.nav__container{
-    display: flex;
-    width: 60vw;
-    margin: auto;
-    list-style-type: none;
-    justify-content: space-around;
-    align-items: center;
-}
-.nav__logotype{
+@import "../../../presets.scss";
 
+.header {
+  display: flex;
+  width: 100%;
+  height: 7vh;
+  margin: 0 auto;
+  list-style-type: none;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $strong-color;
 }
-.nav__element{
-
-    text-decoration: none;
-    color: #1e1e1e;
+.header__element {
+  flex: 1;
+  height: 100%;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+  line-height: 7vh;
+  font-size: 1rem;
+  color: $whitish;
+  @include if-size(medium) {
+    font-size: 1.2rem;
+  }
+  @include if-size(large) {
     font-size: 1.5rem;
+  }
+}
+.header__element:hover {
+  background-color: $medium-color;
+}
+
+.active-link{
+  text-decoration-line: underline;
+  //   text-decoration-skip-ink: none;
+  text-decoration-color: $accent-color;
 }

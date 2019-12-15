@@ -9,35 +9,35 @@ import { ChartDataModel } from 'src/shared/models/chart-data.model';
 import { Router } from '@angular/router';
 
 @Component({
-    selector:'app-plots-screen',
+    selector: 'app-plots-screen',
     templateUrl: './plots-screen.component.html',
     styleUrls: ['./plots-screen.component.scss']
 })
 export class PlotsScreenComponent implements OnInit, OnDestroy {
-    @Select(PlotsState.plots) plotsData$: Observable<ChartDataModel[]>
+    @Select(PlotsState.plots) plotsData$: Observable<ChartDataModel[]>;
     plotsData: ChartDataModel[];
-    tableHeaders = ['Plot Name', 'Re-render', "Remove"]
+    tableHeaders = ['Plot Name', 'Re-render', 'Remove'];
     tableData = [];
     plotDataSubscription: Subscription;
     constructor(private store: Store, private router: Router) {
     }
     ngOnInit(): void {
-        this.fetchPlotsFromLocalStorage()
+        this.fetchPlotsFromLocalStorage();
         this.plotDataSubscription = this.plotsData$.subscribe(data => {
-            this.plotsData = data
-        })
+            this.plotsData = data;
+        });
     }
     ngOnDestroy(): void {
-        this.plotDataSubscription.unsubscribe()
+        this.plotDataSubscription.unsubscribe();
     }
     reRender(plotData: Array<PlotDataModel>) {
-        this.store.dispatch(new AddDataToRerender(plotData))
-        this.router.navigate(['/new-plot'])
+        this.store.dispatch(new AddDataToRerender(plotData));
+        this.router.navigate(['/new-plot']);
     }
     removePlot(plotName: string) {
-        this.store.dispatch(new RemovePlot(plotName))
+        this.store.dispatch(new RemovePlot(plotName));
     }
     private fetchPlotsFromLocalStorage() {
-        this.store.dispatch(new GetPlotsData())
-    } 
+        this.store.dispatch(new GetPlotsData());
+    }
 }
