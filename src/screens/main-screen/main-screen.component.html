@@ -23,8 +23,8 @@
         >
         </app-alert-box>
       </div>
-      <div class="main-screen__form-element  main-screen__form-onload-message">
-        <p *ngIf="!form.value.seqFileContent">
+      <div class="main-screen__form-element  main-screen__form-onload-message" >
+        <p *ngIf="!form.value.seqFileContent" [ngClass]="{'alert': submitted}">
           sequence <br />
           not <br />
           loaded
@@ -56,8 +56,8 @@
       >
         <div class="main-screen__form-button-text">Download</div>
       </button>
-      <div class="main-screen__form-element main-screen__form-onload-message">
-        <p *ngIf="!downloadedData && !fetchingData">sequence not loaded</p>
+      <div class="main-screen__form-element main-screen__form-onload-message" >
+        <p *ngIf="!downloadedData && !fetchingData" [ngClass]="{'alert': submitted}">sequence not loaded</p>
         <img
           src="../../assets/svg/check.svg"
           alt="sequence downloaded"

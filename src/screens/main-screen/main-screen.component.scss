@@ -17,7 +17,6 @@
   align-items: center;
   margin-top: 5rem;
   @include if-size(mediumUp) {
-    height: 20%;
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -87,6 +86,9 @@
     font-weight: bold;
     color: $strong-color;
   }
+  p.alert {
+    color: $crimson;
+  }
 }
 .main-screen__form-spinner {
   display: inline-block;
@@ -123,4 +125,7 @@
 }
 app-alert-box {
   position: relative;
+}
+app-plot-area {
+  margin-top: 5vh;
 }
