@@ -46,5 +46,10 @@
 .about__paragraph-link {
   cursor: pointer;
   text-decoration: none;
+  color: $medium-color;
+  font-weight: 600;
+}
+.about__paragraph-link:hover {
+  text-decoration: none;
   color: $strong-color;
 }
