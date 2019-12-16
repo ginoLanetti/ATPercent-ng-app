@@ -30,7 +30,7 @@
           loaded
         </p>
         <img
-          src="../../assets/svg/check.svg"
+          src="assets/svg/check.svg"
           alt="loading..."
           width="55"
           *ngIf="form.value.seqFileContent"
@@ -59,7 +59,7 @@
       <div class="main-screen__form-element main-screen__form-onload-message" >
         <p *ngIf="!downloadedData && !fetchingData" [ngClass]="{'alert': submitted}">sequence not loaded</p>
         <img
-          src="../../assets/svg/check.svg"
+          src="assets/svg/check.svg"
           alt="sequence downloaded"
           width="55"
           *ngIf="downloadedData && !fetchingData"
