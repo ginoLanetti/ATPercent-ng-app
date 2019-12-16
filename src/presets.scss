@@ -1,6 +1,7 @@
 /*variables*/
 $small-screen-break: 425px;
 $medium-screen-break: 768px;
+$large-screen-break: 1440px;
 
 $strong-color: #035e83;
 $medium-color: #447c92;
@@ -25,13 +26,14 @@ $mistyrose: mistyrose;
     @media only screen and (min-width: $small-screen-break + 1) and (max-width: $medium-screen-break - 1) {
       @content;
     }
-  } @else if $media == large {
-    @media only screen and (min-width: $medium-screen-break) {
-      @content;
-    }
   } @else if $media == mediumUp {
-    @media only screen and (min-width: $medium-screen-break) {
+    @media only screen and (min-width: $small-screen-break + 1) {
       @content;
     }
   }
+   @else if $media == large {
+    @media only screen and (min-width: $large-screen-break) {
+      @content;
+    }
+  } 
 }

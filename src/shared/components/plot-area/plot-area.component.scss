@@ -2,17 +2,15 @@
 
 .plot-area {
   position: relative;
-  //   min-width: 425px;
-  width: 70vw;
-  margin: 5vh auto;
+  width: 100%;
+  max-height: 55vh;
 }
 .plot-area__placeholder {
   position: absolute;
-  top: 10%;
+  top: 6vh;
   left: 50%;
   transform: translateX(-50%);
   color: $accent-color;
-  width: 100%;
   text-align: center;
   font-size: 1.5rem;
   @include if-size(medium) {

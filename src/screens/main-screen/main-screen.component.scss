@@ -17,7 +17,6 @@
   align-items: center;
   margin-top: 5rem;
   @include if-size(mediumUp) {
-    height: 20%;
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
